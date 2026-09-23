@@ -1,0 +1,176 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Italianno&display=swap");
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Nesta Mastone";
+  src: url("/fonts/NestaMastone.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --cream: #f2ede2;
+  --warm-cream: #f2ede2;
+  --soft-sage: #a8b09a;
+  --olive: #747a5a;
+  --olive-deep: #596041;
+  --sand: #d8c6a9;
+  --taupe: #a69682;
+  --brown: #4e4035;
+  --ink: #2d3026;
+  --paper: #eee8dc;
+  --font-nesta: "Nesta Mastone", cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  background: var(--cream);
+}
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: "DM Sans", sans-serif;
+  overflow-x: hidden;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+::selection {
+  background: var(--olive);
+  color: var(--cream);
+}
+
+.font-display {
+  font-family: "Cormorant Garamond", serif;
+}
+.font-script {
+  font-family: "Italianno", cursive;
+}
+
+.paper-texture {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(78, 64, 53, 0.035) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(78, 64, 53, 0.025) 0 1px,
+      transparent 1.5px
+    ),
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.32),
+      transparent 38%,
+      rgba(78, 64, 53, 0.025)
+    );
+  background-size:
+    17px 17px,
+    23px 23px,
+    100% 100%;
+}
+
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.olive-wash {
+  background:
+    radial-gradient(
+      circle at 70% 15%,
+      rgba(116, 122, 90, 0.18),
+      transparent 30%
+    ),
+    linear-gradient(135deg, rgba(168, 176, 154, 0.18), transparent 55%);
+}
+
+.leaf-pattern {
+  background-image:
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(116, 122, 90, 0.11) 0 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      ellipse at 80% 65%,
+      rgba(78, 64, 53, 0.07) 0 1px,
+      transparent 1.5px
+    );
+  background-size:
+    38px 38px,
+    54px 54px;
+}
+
+.section-rule {
+  width: 72px;
+  height: 1px;
+  background: rgba(78, 64, 53, 0.4);
+}
+
+.invite-card-shadow {
+  box-shadow:
+    0 34px 90px rgba(62, 54, 43, 0.23),
+    0 8px 22px rgba(62, 54, 43, 0.12);
+}
+
+/* Prevent mobile browser zoom/overflow from compromising the invitation. */
+@media (max-width: 380px) {
+  .display-tight {
+    letter-spacing: -0.035em;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

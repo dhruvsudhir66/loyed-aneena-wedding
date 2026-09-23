@@ -1,0 +1,8 @@
+"use client";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+type TimeLeft = { days:number; hours:number; minutes:number; seconds:number };
+const target = new Date("2027-04-17T16:00:00+05:30").getTime();
+function getTime(): TimeLeft { const diff=Math.max(0,target-Date.now()); return {days:Math.floor(diff/86400000),hours:Math.floor(diff/3600000)%24,minutes:Math.floor(diff/60000)%60,seconds:Math.floor(diff/1000)%60}; }
+export default function Countdown(){ const [time,setTime]=useState<TimeLeft>(getTime); useEffect(()=>{const id=setInterval(()=>setTime(getTime()),1000);return()=>clearInterval(id)},[]); const units=[['Days',time.days],['Hours',time.hours],['Minutes',time.minutes],['Seconds',time.seconds]] as const; return <section id="countdown" className="relative overflow-hidden bg-[#596041] px-5 py-24 text-[#f2ede2] sm:px-8 sm:py-28"><div className="absolute inset-0 leaf-pattern opacity-20"/><div className="relative z-10 mx-auto max-w-5xl"><motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true,margin:'-80px'}}><p className="text-[9px] uppercase tracking-[.36em] text-[#d8c6a9]">Until we say I do</p><h2 className="font-display mt-4 text-5xl font-medium sm:text-7xl">The countdown.</h2><div className="mt-10 grid grid-cols-2 border-t border-[#f2ede2]/20 sm:grid-cols-4">{units.map(([label,value],i)=><div key={label} className="border-b border-r border-[#f2ede2]/20 px-4 py-7 last:border-r-0 sm:border-b-0 sm:py-10"><div className="font-display text-5xl sm:text-6xl">{String(value).padStart(2,'0')}</div><div className="mt-2 text-[9px] uppercase tracking-[.24em] text-[#d8c6a9]">{label}</div></div>)}</div></motion.div></div></section> }
