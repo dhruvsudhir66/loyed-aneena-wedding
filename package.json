@@ -1,27 +1,32 @@
 {
-  "name": "sage-olive-wedding-invitation",
+  "name": "loyed-aneena-wedding",
   "version": "1.0.0",
   "private": true,
-  "scripts": {"dev":"next dev","build":"next build","start":"next start","lint":"eslint ."},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint ."
+  },
   "dependencies": {
-    "@aws-sdk/client-s3":"^3.864.0",
-    "@aws-sdk/s3-request-presigner":"^3.864.0",
-    "framer-motion":"^12.23.12",
-    "lucide-react":"^0.468.0",
-    "next":"16.3.5",
-    "react":"19.3.0",
-    "react-dom":"19.3.0",
-    "resend":"^6.1.0",
-    "zod":"^4.0.5"
+    "@aws-sdk/client-s3": "^3.864.0",
+    "@aws-sdk/s3-request-presigner": "^3.864.0",
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.468.0",
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "resend": "^6.1.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
-    "@tailwindcss/postcss":"^4.1.13",
-    "@types/node":"^24.3.0",
-    "@types/react":"^19.1.12",
-    "@types/react-dom":"^19.1.9",
-    "eslint":"^9.35.0",
-    "eslint-config-next":"16.3.5",
-    "tailwindcss":"^4.1.13",
-    "typescript":"^5.9.3"
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "eslint": "^9.35.0",
+    "eslint-config-next": "16.3.5",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.3"
   }
 }
