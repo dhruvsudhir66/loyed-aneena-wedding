@@ -26,10 +26,12 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
   background: var(--cream);
 }
+
 body {
   margin: 0;
   background: var(--cream);
@@ -37,12 +39,14 @@ body {
   font-family: "DM Sans", sans-serif;
   overflow-x: hidden;
 }
+
 button,
 input,
 textarea,
 select {
   font: inherit;
 }
+
 ::selection {
   background: var(--olive);
   color: var(--cream);
@@ -51,6 +55,7 @@ select {
 .font-display {
   font-family: "Cormorant Garamond", serif;
 }
+
 .font-script {
   font-family: "Italianno", cursive;
 }
@@ -58,22 +63,16 @@ select {
 .paper-texture {
   background-color: var(--cream);
   background-image:
-    radial-gradient(
-      circle at 20% 20%,
+    radial-gradient(circle at 20% 20%,
       rgba(78, 64, 53, 0.035) 0 1px,
-      transparent 1.5px
-    ),
-    radial-gradient(
-      circle at 70% 70%,
+      transparent 1.5px),
+    radial-gradient(circle at 70% 70%,
       rgba(78, 64, 53, 0.025) 0 1px,
-      transparent 1.5px
-    ),
-    linear-gradient(
-      115deg,
+      transparent 1.5px),
+    linear-gradient(115deg,
       rgba(255, 255, 255, 0.32),
       transparent 38%,
-      rgba(78, 64, 53, 0.025)
-    );
+      rgba(78, 64, 53, 0.025));
   background-size:
     17px 17px,
     23px 23px,
@@ -92,26 +91,20 @@ select {
 
 .olive-wash {
   background:
-    radial-gradient(
-      circle at 70% 15%,
+    radial-gradient(circle at 70% 15%,
       rgba(116, 122, 90, 0.18),
-      transparent 30%
-    ),
+      transparent 30%),
     linear-gradient(135deg, rgba(168, 176, 154, 0.18), transparent 55%);
 }
 
 .leaf-pattern {
   background-image:
-    radial-gradient(
-      ellipse at 20% 20%,
+    radial-gradient(ellipse at 20% 20%,
       rgba(116, 122, 90, 0.11) 0 1px,
-      transparent 1.5px
-    ),
-    radial-gradient(
-      ellipse at 80% 65%,
+      transparent 1.5px),
+    radial-gradient(ellipse at 80% 65%,
       rgba(78, 64, 53, 0.07) 0 1px,
-      transparent 1.5px
-    );
+      transparent 1.5px);
   background-size:
     38px 38px,
     54px 54px;
@@ -137,27 +130,33 @@ select {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
 }
+
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
 
 @keyframes pulse-soft {
+
   0%,
   100% {
     opacity: 0.45;
   }
+
   50% {
     opacity: 1;
   }
 }
+
 .animate-pulse-soft {
   animation: pulse-soft 2.8s ease-in-out infinite;
 }
@@ -166,6 +165,7 @@ select {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -173,4 +173,9 @@ select {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+.countdown-paper-mask {
+  -webkit-mask-mode: luminance;
+  mask-mode: luminance;
 }

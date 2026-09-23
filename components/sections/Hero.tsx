@@ -86,6 +86,7 @@ function Countdown() {
           alt=""
           aria-hidden="true"
           className="
+          countdown-paper-mask
             pointer-events-none
             absolute
             left-1/2
@@ -114,9 +115,6 @@ function Countdown() {
 
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
-
-            WebkitMaskMode: "luminance",
-            maskMode: "luminance",
           }}
         />
 
