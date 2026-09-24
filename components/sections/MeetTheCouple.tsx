@@ -559,36 +559,6 @@ function PersonSpread({
                         </p>
 
                         {/* ==================================================
-                DETAILS
-            ================================================== */}
-
-                        <div className="mt-8 max-w-[470px] border-y border-[#4e4035]/10">
-                            {details.map((detail, index) => (
-                                <div
-                                    key={detail.label}
-                                    className={`
-                    grid
-                    grid-cols-[90px_1fr]
-                    gap-5
-                    py-3
-                    ${index !== details.length - 1
-                                            ? "border-b border-[#4e4035]/[0.07]"
-                                            : ""
-                                        }
-                  `}
-                                >
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#596041]/60">
-                                        {detail.label}
-                                    </span>
-
-                                    <span className="font-serif text-[9px] uppercase tracking-[0.13em] text-[#4e4035]/60">
-                                        {detail.value}
-                                    </span>
-                                </div>
-                            ))}
-                        </div>
-
-                        {/* ==================================================
                 HANDWRITTEN NOTE
             ================================================== */}
 

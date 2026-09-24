@@ -43,7 +43,7 @@ export default function RSVP() {
             setMessage(
                 error instanceof Error
                     ? error.message
-                    : "Unable to submit RSVP.",
+                    : "Unable to submit RSVP."
             );
         }
     }
@@ -52,25 +52,31 @@ export default function RSVP() {
         <section
             id="rsvp"
             className="
-        relative
-        overflow-hidden
-        bg-[#e9e4da]
-        px-5
-        pb-24
-        pt-20
-        text-[#4e4035]
-        sm:px-8
-        sm:pb-28
-        sm:pt-24
-      "
+                relative
+                overflow-hidden
+                bg-[#e9e4da]
+                px-5
+                pb-20
+                pt-14
+                text-[#4e4035]
+                sm:px-8
+                sm:pb-24
+                sm:pt-18
+            "
         >
             {/* =========================================================
-          CONTINUOUS PAPER
-      ========================================================== */}
+                CONTINUOUS PAPER
+            ========================================================== */}
 
             <div className="pointer-events-none absolute inset-0">
                 <div
-                    className="absolute inset-0 bg-[#e9e4da] bg-[url('/crumpled-paper.jpg')] bg-repeat"
+                    className="
+                        absolute
+                        inset-0
+                        bg-[#e9e4da]
+                        bg-[url('/crumpled-paper.jpg')]
+                        bg-repeat
+                    "
                     style={{
                         backgroundSize: "900px auto",
                     }}
@@ -78,10 +84,15 @@ export default function RSVP() {
 
                 <div className="absolute inset-0 bg-[#eee9df]/48" />
 
-                <div className="absolute inset-0 bg-[#d8c6a9]/[0.06] mix-blend-multiply" />
+                <div className="absolute inset-0 bg-[#d8c6a9]/[0.055] mix-blend-multiply" />
 
                 <div
-                    className="absolute inset-0 opacity-[0.16] mix-blend-multiply"
+                    className="
+                        absolute
+                        inset-0
+                        opacity-[0.12]
+                        mix-blend-multiply
+                    "
                     style={{
                         backgroundImage:
                             "radial-gradient(rgba(78,64,53,0.28) 0.45px, transparent 0.65px)",
@@ -91,110 +102,111 @@ export default function RSVP() {
             </div>
 
             {/* =========================================================
-          EDITORIAL BACKGROUND
-      ========================================================== */}
+                EDITORIAL BACKGROUND
+            ========================================================== */}
 
-            <div className="pointer-events-none absolute inset-0">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div
                     className="
-            absolute
-            left-1/2
-            top-[4%]
-            -translate-x-1/2
-            whitespace-nowrap
-            font-serif
-            text-[clamp(90px,19vw,230px)]
-            font-black
-            uppercase
-            leading-none
-            tracking-[-0.08em]
-            text-[#4e4035]/[0.028]
-          "
+                        absolute
+                        left-1/2
+                        top-[5%]
+                        -translate-x-1/2
+                        whitespace-nowrap
+                        font-serif
+                        text-[clamp(75px,16vw,200px)]
+                        font-black
+                        uppercase
+                        leading-none
+                        tracking-[-0.08em]
+                        text-[#4e4035]/[0.022]
+                    "
                 >
                     RSVP
                 </div>
 
-                <div className="absolute bottom-16 left-[9%] top-16 hidden w-px bg-[#4e4035]/[0.055] lg:block" />
+                <div className="absolute bottom-12 left-[10%] top-12 hidden w-px bg-[#4e4035]/[0.045] lg:block" />
 
-                <div className="absolute bottom-16 right-[9%] top-16 hidden w-px bg-[#4e4035]/[0.055] lg:block" />
+                <div className="absolute bottom-12 right-[10%] top-12 hidden w-px bg-[#4e4035]/[0.045] lg:block" />
 
                 <div
                     className="
-            absolute
-            left-[2.5%]
-            top-1/2
-            hidden
-            -translate-y-1/2
-            -rotate-90
-            font-serif
-            text-[5px]
-            uppercase
-            tracking-[0.35em]
-            text-[#4e4035]/[0.18]
-            lg:block
-          "
+                        absolute
+                        left-[2.5%]
+                        top-1/2
+                        hidden
+                        -translate-y-1/2
+                        -rotate-90
+                        font-serif
+                        text-[5px]
+                        uppercase
+                        tracking-[0.32em]
+                        text-[#4e4035]/[0.14]
+                        lg:block
+                    "
                 >
                     A PERSONAL NOTE · RESPONSE CARD · 22 NOVEMBER 2026
                 </div>
 
                 <div
                     className="
-            absolute
-            right-[2.5%]
-            top-1/2
-            hidden
-            translate-y-1/2
-            rotate-90
-            font-serif
-            text-[5px]
-            uppercase
-            tracking-[0.35em]
-            text-[#4e4035]/[0.18]
-            lg:block
-          "
+                        absolute
+                        right-[2.5%]
+                        top-1/2
+                        hidden
+                        translate-y-1/2
+                        rotate-90
+                        font-serif
+                        text-[5px]
+                        uppercase
+                        tracking-[0.32em]
+                        text-[#4e4035]/[0.14]
+                        lg:block
+                    "
                 >
                     THE WEDDING POST · A &amp; L
                 </div>
             </div>
 
             {/* =========================================================
-          TOP EDITORIAL HEADER
-      ========================================================== */}
+                TOP EDITORIAL HEADER
+            ========================================================== */}
 
-            <div className="relative z-10 mx-auto mb-12 max-w-6xl sm:mb-16">
-                <div className="flex items-center gap-3">
-                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+            <div className="relative z-10 mx-auto mb-8 max-w-5xl sm:mb-10">
+                <div className="flex items-center gap-2.5">
+                    <span className="font-serif text-[5px] uppercase tracking-[0.28em] text-[#4e4035]/30">
                         Volume 01
                     </span>
 
                     <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+                    <span className="font-serif text-[5px] uppercase tracking-[0.28em] text-[#4e4035]/30">
                         Response Card
                     </span>
 
-                    <span className="h-px w-12 bg-[#4e4035]/10" />
+                    <span className="h-px w-7 bg-[#4e4035]/10" />
 
-                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#596041]/60">
+                    <span className="font-serif text-[5px] uppercase tracking-[0.28em] text-[#596041]/60">
                         06
                     </span>
                 </div>
             </div>
 
             {/* =========================================================
-          MAIN CONTENT
-      ========================================================== */}
+                MAIN CONTENT
+            ========================================================== */}
 
-            <div className="relative z-10 mx-auto max-w-6xl">
-                <div className="grid items-start gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
-                    {/* =====================================================
-              LEFT SIDE
-          ===================================================== */}
+            <div className="relative z-10 mx-auto max-w-4xl">
+                <div className="grid items-center gap-9 lg:grid-cols-[0.78fr_1.22fr] lg:gap-14">
+
+                    {/* =================================================
+                        LEFT SIDE
+                    ================================================== */}
 
                     <motion.div
                         initial={{
                             opacity: 0,
-                            x: -25,
+                            x: -18,
                         }}
                         whileInView={{
                             opacity: 1,
@@ -205,52 +217,52 @@ export default function RSVP() {
                             amount: 0.2,
                         }}
                         transition={{
-                            duration: 0.8,
+                            duration: 0.7,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="lg:sticky lg:top-28"
+                        className="lg:sticky lg:top-24"
                     >
-                        <div className="flex items-center gap-3">
-                            <span className="h-px w-9 bg-[#4e4035]/25" />
+                        <div className="flex items-center gap-2.5">
+                            <span className="h-px w-7 bg-[#4e4035]/20" />
 
-                            <span className="font-serif text-[7px] uppercase tracking-[0.35em] text-[#596041]/70">
+                            <span className="font-serif text-[6px] uppercase tracking-[0.32em] text-[#596041]/65">
                                 A little note
                             </span>
                         </div>
 
                         <h2
                             className="
-                mt-5
-                text-[68px]
-                leading-[0.72]
-                tracking-[-0.04em]
-                text-[#4e4035]
-                sm:text-[88px]
-              "
+                                mt-4
+                                text-[52px]
+                                leading-[0.74]
+                                tracking-[-0.04em]
+                                text-[#4e4035]
+                                sm:text-[68px]
+                            "
                             style={{
-                                fontFamily: '"Nesta Mastone", cursive',
+                                fontFamily:
+                                    '"Nesta Mastone", cursive',
                             }}
                         >
                             Will you
                             <br />
-                            <br />
-                            <span className="ml-[0.18em] text-[#596041]">
+                            <span className="ml-[0.15em] text-[#596041]">
                                 join us?
                             </span>
                         </h2>
 
-                        <p className="mt-8 max-w-[320px] font-serif text-[13px] leading-[1.9] text-[#4e4035]/65 sm:text-[14px]">
-                            We would love to know if you can be there as we begin this
-                            next chapter together.
+                        <p className="mt-6 max-w-[275px] font-serif text-[11px] leading-[1.8] text-[#4e4035]/60 sm:text-[12px]">
+                            We would love to know if you can be
+                            there as we begin this next chapter
+                            together.
                         </p>
 
-                        <div className="mt-10 max-w-[300px] rotate-[-2deg]">
-                            <div className="relative border-t border-[#4e4035]/15">
+                        <div className="mt-7 max-w-[240px] rotate-[-2deg]">
+                            <div className="border-t border-[#4e4035]/12">
+                                <div className="mt-2.5 flex items-center gap-2">
+                                    <span className="h-px w-6 bg-[#747a5a]/30" />
 
-                                <div className="mt-3 flex items-center gap-2">
-                                    <span className="h-px w-8 bg-[#747a5a]/35" />
-
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/30">
+                                    <span className="font-serif text-[5px] uppercase tracking-[0.25em] text-[#4e4035]/28">
                                         22 · 11 · 2026
                                     </span>
                                 </div>
@@ -258,15 +270,15 @@ export default function RSVP() {
                         </div>
                     </motion.div>
 
-                    {/* =====================================================
-              SUBTLE RESPONSE SHEET
-          ===================================================== */}
+                    {/* =================================================
+                        RESPONSE SHEET
+                    ================================================== */}
 
                     <motion.form
                         onSubmit={submit}
                         initial={{
                             opacity: 0,
-                            y: 25,
+                            y: 18,
                         }}
                         whileInView={{
                             opacity: 1,
@@ -277,34 +289,39 @@ export default function RSVP() {
                             amount: 0.15,
                         }}
                         transition={{
-                            duration: 0.9,
+                            duration: 0.8,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="relative"
+                        className="relative mx-auto w-full max-w-[500px]"
                     >
-                        {/* Very subtle paper edge */}
-                        <div className="absolute inset-[2px] bg-[#d8c6a9]/[0.10] blur-[1px]" />
+                        {/* Subtle paper edge */}
+                        <div className="absolute inset-[2px] bg-[#d8c6a9]/[0.07] blur-[1px]" />
 
                         {/* Main sheet */}
                         <div
                             className="
-                relative
-                bg-[#eee9df]/80
-                px-6
-                pb-8
-                pt-7
-                shadow-[0_8px_25px_rgba(78,64,53,0.055)]
-                ring-1
-                ring-[#4e4035]/[0.07]
-                sm:px-10
-                sm:pb-10
-                sm:pt-9
-              "
+                                relative
+                                bg-[#eee9df]/72
+                                px-5
+                                pb-6
+                                pt-5
+                                shadow-[0_6px_20px_rgba(78,64,53,0.045)]
+                                ring-1
+                                ring-[#4e4035]/[0.055]
+                                sm:px-7
+                                sm:pb-7
+                                sm:pt-6
+                            "
                         >
-                            {/* Extremely subtle grain */}
-
+                            {/* Very subtle grain */}
                             <div
-                                className="pointer-events-none absolute inset-0 opacity-[0.10] mix-blend-multiply"
+                                className="
+                                    pointer-events-none
+                                    absolute
+                                    inset-0
+                                    opacity-[0.07]
+                                    mix-blend-multiply
+                                "
                                 style={{
                                     backgroundImage:
                                         "radial-gradient(rgba(78,64,53,0.2) 0.4px, transparent 0.6px)",
@@ -312,34 +329,40 @@ export default function RSVP() {
                                 }}
                             />
 
-                            {/* Very subtle tape */}
-
-                            <div className="absolute -top-2 right-12 h-7 w-16 rotate-[7deg] bg-[#d8c6a9]/20" />
+                            {/* Small paper tape */}
+                            <div className="absolute -top-1.5 right-10 h-5 w-12 rotate-[7deg] bg-[#d8c6a9]/[0.17]" />
 
                             {/* =================================================
-                  HEADER
-              ================================================= */}
+                                FORM HEADER
+                            ================================================== */}
 
                             <div className="relative">
-                                <div className="flex items-center justify-between border-b border-[#4e4035]/[0.09] pb-3">
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+                                <div className="flex items-center justify-between border-b border-[#4e4035]/[0.07] pb-2.5">
+                                    <span className="font-serif text-[5px] uppercase tracking-[0.28em] text-[#4e4035]/28">
                                         The Wedding Post
                                     </span>
 
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+                                    <span className="font-serif text-[5px] uppercase tracking-[0.28em] text-[#4e4035]/28">
                                         A &amp; L · 06
                                     </span>
                                 </div>
 
-                                <div className="mt-7">
-                                    <p className="font-serif text-[7px] uppercase tracking-[0.35em] text-[#596041]/60">
+                                <div className="mt-5">
+                                    <p className="font-serif text-[6px] uppercase tracking-[0.32em] text-[#596041]/55">
                                         Kindly respond
                                     </p>
 
                                     <h3
-                                        className="mt-2 text-[39px] leading-[0.8] text-[#4e4035] sm:text-[48px]"
+                                        className="
+                                            mt-1.5
+                                            text-[32px]
+                                            leading-[0.82]
+                                            text-[#4e4035]
+                                            sm:text-[38px]
+                                        "
                                         style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
+                                            fontFamily:
+                                                '"Nesta Mastone", cursive',
                                         }}
                                     >
                                         A note from you
@@ -348,44 +371,50 @@ export default function RSVP() {
                             </div>
 
                             {/* =================================================
-                  NAME
-              ================================================= */}
+                                NAME
+                            ================================================== */}
 
-                            <div className="relative mt-10">
-                                <PaperLabel number="01" text="Your name" />
+                            <div className="relative mt-7">
+                                <PaperLabel
+                                    number="01"
+                                    text="Your name"
+                                />
 
                                 <input
                                     name="name"
                                     type="text"
                                     required
                                     className="
-                    mt-3
-                    w-full
-                    border-0
-                    border-b
-                    border-[#4e4035]/20
-                    bg-transparent
-                    px-0
-                    py-2
-                    font-serif
-                    text-[17px]
-                    text-[#4e4035]
-                    outline-none
-                    placeholder:text-[#4e4035]/25
-                    focus:border-[#596041]/60
-                  "
+                                        mt-2.5
+                                        w-full
+                                        border-0
+                                        border-b
+                                        border-[#4e4035]/[0.16]
+                                        bg-transparent
+                                        px-0
+                                        py-1.5
+                                        font-serif
+                                        text-[14px]
+                                        text-[#4e4035]
+                                        outline-none
+                                        placeholder:text-[#4e4035]/20
+                                        focus:border-[#596041]/55
+                                    "
                                     placeholder="Write your name here"
                                 />
                             </div>
 
                             {/* =================================================
-                  ATTENDANCE
-              ================================================= */}
+                                ATTENDANCE
+                            ================================================== */}
 
-                            <div className="relative mt-9">
-                                <PaperLabel number="02" text="Will you be there?" />
+                            <div className="relative mt-7">
+                                <PaperLabel
+                                    number="02"
+                                    text="Will you be there?"
+                                />
 
-                                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                                <div className="mt-3 grid gap-2.5 sm:grid-cols-2">
                                     <RadioOption
                                         name="attendance"
                                         value="Joyfully attending"
@@ -403,49 +432,49 @@ export default function RSVP() {
                             </div>
 
                             {/* =================================================
-                  SUBMIT
-              ================================================= */}
+                                SUBMIT
+                            ================================================== */}
 
-                            <div className="relative mt-8 border-t border-[#4e4035]/[0.09] pt-6">
+                            <div className="relative mt-6 border-t border-[#4e4035]/[0.07] pt-4">
                                 <button
                                     type="submit"
                                     disabled={status === "loading"}
                                     className="
-                    group
-                    flex
-                    w-full
-                    items-center
-                    justify-center
-                    gap-3
-                    border
-                    border-[#596041]/60
-                    bg-[#596041]/[0.88]
-                    px-5
-                    py-3.5
-                    text-[#f2eee5]
-                    transition-all
-                    duration-300
-                    hover:bg-[#4e4035]/90
-                    disabled:cursor-not-allowed
-                    disabled:opacity-60
-                  "
+                                        group
+                                        flex
+                                        w-full
+                                        items-center
+                                        justify-center
+                                        gap-2.5
+                                        border
+                                        border-[#596041]/50
+                                        bg-[#596041]/[0.82]
+                                        px-4
+                                        py-2.5
+                                        text-[#f2eee5]
+                                        transition-all
+                                        duration-300
+                                        hover:bg-[#4e4035]/85
+                                        disabled:cursor-not-allowed
+                                        disabled:opacity-60
+                                    "
                                 >
                                     {status === "loading" ? (
                                         <LoaderCircle
-                                            size={14}
+                                            size={12}
                                             className="animate-spin"
                                         />
                                     ) : status === "success" ? (
-                                        <Check size={14} />
+                                        <Check size={12} />
                                     ) : (
                                         <Heart
-                                            size={13}
+                                            size={11}
                                             strokeWidth={1}
                                             className="transition-transform group-hover:scale-110"
                                         />
                                     )}
 
-                                    <span className="font-serif text-[8px] uppercase tracking-[0.28em]">
+                                    <span className="font-serif text-[7px] uppercase tracking-[0.25em]">
                                         {status === "success"
                                             ? "RSVP received"
                                             : "Send response"}
@@ -455,9 +484,9 @@ export default function RSVP() {
                                 {message && (
                                     <p
                                         aria-live="polite"
-                                        className={`mt-4 text-center font-serif text-[11px] leading-5 ${status === "error"
-                                            ? "text-red-800"
-                                            : "text-[#596041]"
+                                        className={`mt-3 text-center font-serif text-[10px] leading-4 ${status === "error"
+                                                ? "text-red-800"
+                                                : "text-[#596041]"
                                             }`}
                                     >
                                         {message}
@@ -466,23 +495,25 @@ export default function RSVP() {
                             </div>
 
                             {/* =================================================
-                  SIGNATURE
-              ================================================= */}
+                                SIGNATURE
+                            ================================================== */}
 
-                            <div className="relative mt-7 text-center">
+                            <div className="relative mt-5 text-center">
                                 <p
-                                    className="text-[22px] leading-none text-[#596041]/55"
+                                    className="text-[18px] leading-none text-[#596041]/50"
                                     style={{
-                                        fontFamily: '"Nesta Mastone", cursive',
+                                        fontFamily:
+                                            '"Nesta Mastone", cursive',
                                     }}
                                 >
                                     with love,
                                 </p>
 
                                 <p
-                                    className="mt-1 text-[26px] leading-none text-[#4e4035]/65"
+                                    className="mt-0.5 text-[21px] leading-none text-[#4e4035]/60"
                                     style={{
-                                        fontFamily: '"Nesta Mastone", cursive',
+                                        fontFamily:
+                                            '"Nesta Mastone", cursive',
                                     }}
                                 >
                                     Loyed &amp; Aneena
@@ -494,30 +525,30 @@ export default function RSVP() {
             </div>
 
             {/* =========================================================
-          PAGE FOOTER
-      ========================================================== */}
+                PAGE FOOTER
+            ========================================================== */}
 
-            <div className="relative z-10 mx-auto mt-16 max-w-6xl sm:mt-20">
-                <div className="flex items-center gap-3">
-                    <div className="flex shrink-0 items-center gap-2">
-                        <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#4e4035]/25">
+            <div className="relative z-10 mx-auto mt-11 max-w-5xl sm:mt-14">
+                <div className="flex items-center gap-2.5">
+                    <div className="flex shrink-0 items-center gap-1.5">
+                        <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/22">
                             Page
                         </span>
 
-                        <span className="font-serif text-[11px] tracking-[0.12em] text-[#596041]/70">
+                        <span className="font-serif text-[10px] tracking-[0.12em] text-[#596041]/65">
                             06
                         </span>
                     </div>
 
                     <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                    <span className="hidden font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/25 sm:block">
+                    <span className="hidden font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/22 sm:block">
                         RSVP · The Wedding Post
                     </span>
 
                     <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                    <span className="font-serif text-[6px] uppercase tracking-[0.2em] text-[#4e4035]/20">
+                    <span className="font-serif text-[5px] uppercase tracking-[0.18em] text-[#4e4035]/18">
                         A &amp; L
                     </span>
                 </div>
@@ -538,16 +569,16 @@ function PaperLabel({
     text: string;
 }) {
     return (
-        <div className="flex items-center gap-3">
-            <span className="grid size-5 place-items-center border border-[#596041]/25 font-serif text-[6px] text-[#596041]/60">
+        <div className="flex items-center gap-2.5">
+            <span className="grid size-[18px] place-items-center border border-[#596041]/20 font-serif text-[5px] text-[#596041]/55">
                 {number}
             </span>
 
-            <span className="font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/50">
+            <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/45">
                 {text}
             </span>
 
-            <span className="h-px flex-1 bg-[#4e4035]/[0.08]" />
+            <span className="h-px flex-1 bg-[#4e4035]/[0.07]" />
         </div>
     );
 }
@@ -579,48 +610,54 @@ function RadioOption({
 
             <div
                 className="
-          border
-          border-[#4e4035]/[0.09]
-          bg-[#e9e4da]/[0.18]
-          px-4
-          py-3.5
-          transition-all
-          duration-300
-          group-hover:border-[#596041]/30
-          peer-checked:border-[#596041]/40
-          peer-checked:bg-[#596041]/[0.035]
-        "
+                    border
+                    border-[#4e4035]/[0.075]
+                    bg-[#e9e4da]/[0.14]
+                    px-3
+                    py-2.5
+                    transition-all
+                    duration-300
+                    group-hover:border-[#596041]/25
+                    peer-checked:border-[#596041]/35
+                    peer-checked:bg-[#596041]/[0.028]
+                "
             >
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-2.5">
                     <span
                         className="
-              relative
-              mt-0.5
-              grid
-              size-4
-              shrink-0
-              place-items-center
-              rounded-full
-              border
-              border-[#4e4035]/25
-              transition-colors
-              peer-checked:border-[#596041]/60
-            "
+                            relative
+                            mt-0.5
+                            grid
+                            size-3.5
+                            shrink-0
+                            place-items-center
+                            rounded-full
+                            border
+                            border-[#4e4035]/20
+                            transition-colors
+                            peer-checked:border-[#596041]/55
+                        "
                     >
-                        <span className="size-1.5 rounded-full bg-[#596041] opacity-0 transition-opacity group-has-[input:checked]:opacity-100" />
+                        <span className="size-1 rounded-full bg-[#596041] opacity-0 transition-opacity group-has-[input:checked]:opacity-100" />
                     </span>
 
                     <div>
                         <p
-                            className="text-[20px] leading-none text-[#4e4035]/75"
+                            className="
+                                text-[16px]
+                                leading-none
+                                text-[#4e4035]/70
+                                sm:text-[17px]
+                            "
                             style={{
-                                fontFamily: '"Nesta Mastone", cursive',
+                                fontFamily:
+                                    '"Nesta Mastone", cursive',
                             }}
                         >
                             {label}
                         </p>
 
-                        <p className="mt-2 font-serif text-[6px] uppercase tracking-[0.18em] text-[#4e4035]/30">
+                        <p className="mt-1.5 font-serif text-[5px] uppercase tracking-[0.16em] text-[#4e4035]/27">
                             {description}
                         </p>
                     </div>

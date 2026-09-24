@@ -2,6 +2,7 @@
 
 import {
     ChangeEvent,
+    ReactNode,
     useEffect,
     useRef,
     useState,
@@ -33,7 +34,6 @@ export default function GuestUpload() {
     const [greetingStatus, setGreetingStatus] =
         useState<GreetingStatus>("idle");
 
-    const fileInputRef = useRef<HTMLInputElement>(null);
     const cameraInputRef = useRef<HTMLInputElement>(null);
 
     const invitationUrl =
@@ -41,11 +41,9 @@ export default function GuestUpload() {
             ? window.location.href.split("#")[0] + "#home"
             : "";
 
-    /*
-     * ------------------------------------------------------------
-     * FILE HANDLING
-     * ------------------------------------------------------------
-     */
+    /* ------------------------------------------------------------
+       FILE HANDLING
+    ------------------------------------------------------------ */
 
     function addFiles(files: File[]) {
         if (!files.length) return;
@@ -69,7 +67,6 @@ export default function GuestUpload() {
     function choose(e: ChangeEvent<HTMLInputElement>) {
         addFiles(Array.from(e.target.files || []));
 
-        // Allows the same file to be selected again later.
         e.target.value = "";
     }
 
@@ -91,15 +88,14 @@ export default function GuestUpload() {
                 URL.revokeObjectURL(item.url);
             });
         };
+
         // Intentionally only run on unmount.
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    /*
-     * ------------------------------------------------------------
-     * UPLOAD
-     * ------------------------------------------------------------
-     */
+    /* ------------------------------------------------------------
+       UPLOAD
+    ------------------------------------------------------------ */
 
     async function upload() {
         if (!name.trim() || !selected.length) {
@@ -151,10 +147,6 @@ export default function GuestUpload() {
 
             setSelected([]);
 
-            if (fileInputRef.current) {
-                fileInputRef.current.value = "";
-            }
-
             if (cameraInputRef.current) {
                 cameraInputRef.current.value = "";
             }
@@ -169,11 +161,9 @@ export default function GuestUpload() {
         }
     }
 
-    /*
-     * ------------------------------------------------------------
-     * GREETINGS / SHARE
-     * ------------------------------------------------------------
-     */
+    /* ------------------------------------------------------------
+       GREETINGS / SHARE
+    ------------------------------------------------------------ */
 
     async function sendGreeting() {
         const cleanGreeting = greeting.trim();
@@ -226,42 +216,40 @@ Aneena & Loyed
         }
     }
 
-    /*
-     * ------------------------------------------------------------
-     * UI
-     * ------------------------------------------------------------
-     */
+    /* ------------------------------------------------------------
+       UI
+    ------------------------------------------------------------ */
 
     return (
         <>
             <section
                 id="upload"
                 className="
-          relative
-          overflow-hidden
-          bg-[#e9e4da]
-          px-5
-          pb-24
-          pt-20
-          text-[#4e4035]
-          sm:px-8
-          sm:pb-28
-          sm:pt-24
-        "
+                    relative
+                    overflow-hidden
+                    bg-[#e9e4da]
+                    px-5
+                    pb-14
+                    pt-12
+                    text-[#4e4035]
+                    sm:px-8
+                    sm:pb-16
+                    sm:pt-14
+                "
             >
-                {/* =====================================================
-            PAPER
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    PAPER
+                ------------------------------------------------ */}
 
                 <div className="pointer-events-none absolute inset-0">
                     <div
                         className="
-              absolute
-              inset-0
-              bg-[#e9e4da]
-              bg-[url('/crumpled-paper.jpg')]
-              bg-repeat
-            "
+                            absolute
+                            inset-0
+                            bg-[#e9e4da]
+                            bg-[url('/crumpled-paper.jpg')]
+                            bg-repeat
+                        "
                         style={{
                             backgroundSize: "900px auto",
                         }}
@@ -269,95 +257,95 @@ Aneena & Loyed
 
                     <div className="absolute inset-0 bg-[#eee9df]/48" />
 
-                    <div className="absolute inset-0 bg-[#d8c6a9]/[0.06] mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-[#d8c6a9]/[0.05] mix-blend-multiply" />
 
                     <div
                         className="
-              absolute
-              inset-0
-              opacity-[0.16]
-              mix-blend-multiply
-            "
+                            absolute
+                            inset-0
+                            opacity-[0.12]
+                            mix-blend-multiply
+                        "
                         style={{
                             backgroundImage:
-                                "radial-gradient(rgba(78,64,53,0.28) 0.45px, transparent 0.65px)",
+                                "radial-gradient(rgba(78,64,53,0.24) 0.45px, transparent 0.65px)",
                             backgroundSize: "3px 3px",
                         }}
                     />
                 </div>
 
-                {/* =====================================================
-            VERY SUBTLE EDITORIAL BACKGROUND
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    SUBTLE EDITORIAL BACKGROUND
+                ------------------------------------------------ */}
 
                 <div className="pointer-events-none absolute inset-0">
                     <div
                         className="
-              absolute
-              left-1/2
-              top-[5%]
-              -translate-x-1/2
-              whitespace-nowrap
-              font-serif
-              text-[clamp(80px,17vw,220px)]
-              font-black
-              uppercase
-              leading-none
-              tracking-[-0.08em]
-              text-[#4e4035]/[0.025]
-            "
+                            absolute
+                            left-1/2
+                            top-[8%]
+                            -translate-x-1/2
+                            whitespace-nowrap
+                            font-serif
+                            text-[clamp(70px,14vw,180px)]
+                            font-black
+                            uppercase
+                            leading-none
+                            tracking-[-0.08em]
+                            text-[#4e4035]/[0.022]
+                        "
                     >
                         Memories
                     </div>
 
-                    <div className="absolute bottom-20 left-[9%] top-20 hidden w-px bg-[#4e4035]/[0.05] lg:block" />
+                    <div className="absolute bottom-14 left-[9%] top-14 hidden w-px bg-[#4e4035]/[0.045] lg:block" />
 
-                    <div className="absolute bottom-20 right-[9%] top-20 hidden w-px bg-[#4e4035]/[0.05] lg:block" />
+                    <div className="absolute bottom-14 right-[9%] top-14 hidden w-px bg-[#4e4035]/[0.045] lg:block" />
 
                     <div
                         className="
-              absolute
-              left-[2.5%]
-              top-1/2
-              hidden
-              -translate-y-1/2
-              -rotate-90
-              font-serif
-              text-[5px]
-              uppercase
-              tracking-[0.35em]
-              text-[#4e4035]/[0.18]
-              lg:block
-            "
+                            absolute
+                            left-[2.5%]
+                            top-1/2
+                            hidden
+                            -translate-y-1/2
+                            -rotate-90
+                            font-serif
+                            text-[5px]
+                            uppercase
+                            tracking-[0.35em]
+                            text-[#4e4035]/[0.16]
+                            lg:block
+                        "
                     >
                         THE WEDDING POST · A PERSONAL ALBUM
                     </div>
 
                     <div
                         className="
-              absolute
-              right-[2.5%]
-              top-1/2
-              hidden
-              translate-y-1/2
-              rotate-90
-              font-serif
-              text-[5px]
-              uppercase
-              tracking-[0.35em]
-              text-[#4e4035]/[0.18]
-              lg:block
-            "
+                            absolute
+                            right-[2.5%]
+                            top-1/2
+                            hidden
+                            translate-y-1/2
+                            rotate-90
+                            font-serif
+                            text-[5px]
+                            uppercase
+                            tracking-[0.35em]
+                            text-[#4e4035]/[0.16]
+                            lg:block
+                        "
                     >
                         22 NOVEMBER 2026 · A &amp; L
                     </div>
                 </div>
 
-                {/* =====================================================
-            HEADER
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    HEADER
+                ------------------------------------------------ */}
 
-                <div className="relative z-10 mx-auto max-w-6xl">
+                <div className="relative z-10 mx-auto max-w-5xl">
                     <div className="flex items-center gap-3">
                         <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
                             Volume 01
@@ -369,7 +357,7 @@ Aneena & Loyed
                             Guest Album
                         </span>
 
-                        <span className="h-px w-12 bg-[#4e4035]/10" />
+                        <span className="h-px w-8 bg-[#4e4035]/10 sm:w-12" />
 
                         <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#596041]/60">
                             07
@@ -377,16 +365,17 @@ Aneena & Loyed
                     </div>
                 </div>
 
-                {/* =====================================================
-            INTRO
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    INTRO + ACTIONS
+                ------------------------------------------------ */}
 
-                <div className="relative z-10 mx-auto mt-12 max-w-6xl sm:mt-16">
-                    <div className="grid items-end gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+                <div className="relative z-10 mx-auto mt-8 max-w-5xl sm:mt-10">
+                    <div className="grid items-center gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:gap-14">
+                        {/* LEFT */}
                         <motion.div
                             initial={{
                                 opacity: 0,
-                                y: 24,
+                                y: 18,
                             }}
                             whileInView={{
                                 opacity: 1,
@@ -397,51 +386,58 @@ Aneena & Loyed
                                 amount: 0.2,
                             }}
                             transition={{
-                                duration: 0.85,
+                                duration: 0.7,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                         >
-                            <div className="flex items-center gap-3">
-                                <span className="h-px w-9 bg-[#4e4035]/25" />
+                            <div className="flex items-center gap-2.5">
+                                <span className="h-px w-7 bg-[#4e4035]/20" />
 
-                                <span className="font-serif text-[7px] uppercase tracking-[0.35em] text-[#596041]/70">
+                                <span className="font-serif text-[6px] uppercase tracking-[0.32em] text-[#596041]/65">
                                     Add to the album
                                 </span>
                             </div>
 
                             <h2
                                 className="
-                  mt-5
-                  text-[68px]
-                  leading-[0.76]
-                  tracking-[-0.04em]
-                  text-[#4e4035]
-                  sm:text-[92px]
-                "
+                                    mt-4
+                                    text-[54px]
+                                    leading-[0.78]
+                                    tracking-[-0.04em]
+                                    text-[#4e4035]
+                                    sm:text-[68px]
+                                "
                                 style={{
-                                    fontFamily: '"Nesta Mastone", cursive',
+                                    fontFamily:
+                                        '"Nesta Mastone", cursive',
                                 }}
                             >
                                 Keep the
                                 <br />
-                                <span className="ml-[0.12em] text-[#596041]">
+                                <span className="ml-[0.1em] text-[#596041]">
                                     moments.
                                 </span>
                             </h2>
 
-                            <p className="mt-8 max-w-[350px] font-serif text-[13px] leading-[1.9] text-[#4e4035]/60 sm:text-[14px]">
-                                The photographs we take on the day will only
-                                tell part of the story. Add yours to the little
-                                collection we can look back on for years to come.
+                            <p className="mt-5 max-w-[310px] font-serif text-[11px] leading-[1.75] text-[#4e4035]/55 sm:text-[12px]">
+                                The photographs we take on the day will
+                                only tell part of the story. Add yours
+                                to the little collection we can look
+                                back on for years to come.
                             </p>
 
-                            {/* Handwritten annotation */}
-                            <div className="mt-9 max-w-[300px] rotate-[-2deg]">
-                                <div className="border-t border-[#4e4035]/10 pt-4">
+                            <div className="mt-6 max-w-[260px] rotate-[-2deg]">
+                                <div className="border-t border-[#4e4035]/10 pt-3">
                                     <p
-                                        className="text-[25px] leading-[1.05] text-[#596041]/65 sm:text-[29px]"
+                                        className="
+                                            text-[20px]
+                                            leading-[1.05]
+                                            text-[#596041]/60
+                                            sm:text-[23px]
+                                        "
                                         style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
+                                            fontFamily:
+                                                '"Nesta Mastone", cursive',
                                         }}
                                     >
                                         from your camera roll,
@@ -449,10 +445,10 @@ Aneena & Loyed
                                         to our little archive.
                                     </p>
 
-                                    <div className="mt-3 flex items-center gap-2">
-                                        <span className="h-px w-8 bg-[#747a5a]/35" />
+                                    <div className="mt-2 flex items-center gap-2">
+                                        <span className="h-px w-6 bg-[#747a5a]/30" />
 
-                                        <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/30">
+                                        <span className="font-serif text-[5px] uppercase tracking-[0.26em] text-[#4e4035]/25">
                                             with love · A &amp; L
                                         </span>
                                     </div>
@@ -460,14 +456,11 @@ Aneena & Loyed
                             </div>
                         </motion.div>
 
-                        {/* =================================================
-                DOODLE ACTIONS
-            ================================================== */}
-
+                        {/* RIGHT — ACTIONS */}
                         <motion.div
                             initial={{
                                 opacity: 0,
-                                y: 30,
+                                y: 20,
                             }}
                             whileInView={{
                                 opacity: 1,
@@ -478,39 +471,34 @@ Aneena & Loyed
                                 amount: 0.15,
                             }}
                             transition={{
-                                duration: 0.9,
-                                delay: 0.1,
+                                duration: 0.75,
+                                delay: 0.08,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                             className="relative"
                         >
-                            {/* Doodle heading */}
-                            <div className="mb-6 flex items-center justify-between">
-                                <div>
-                                    <span className="font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/35">
-                                        A few ways to leave a little something
-                                    </span>
-                                </div>
+                            <div className="mb-4 flex items-center justify-between">
+                                <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+                                    Leave a little something
+                                </span>
 
                                 <span
-                                    className="hidden text-[21px] text-[#747a5a]/55 sm:block"
+                                    className="hidden text-[16px] text-[#747a5a]/45 sm:block"
                                     style={{
-                                        fontFamily: '"Nesta Mastone", cursive',
+                                        fontFamily:
+                                            '"Nesta Mastone", cursive',
                                     }}
                                 >
                                     x
                                 </span>
                             </div>
 
-                            <div className="relative grid grid-cols-2 gap-x-5 gap-y-9 sm:gap-x-8 sm:gap-y-10">
-                                {/* =============================================
-                    VIEW INVITATION
-                ============================================== */}
-
+                            <div className="grid grid-cols-3 gap-2.5 sm:gap-3.5">
+                                {/* VIEW INVITATION */}
                                 <DoodleAction
                                     title="View invitation"
                                     subtitle="Take another look"
-                                    rotation="-1.5deg"
+                                    rotation="-1deg"
                                     onClick={() => {
                                         document
                                             .getElementById("home")
@@ -522,62 +510,36 @@ Aneena & Loyed
                                     <InvitationDoodle />
                                 </DoodleAction>
 
-                                {/* =============================================
-                    SEND GREETINGS
-                ============================================== */}
-
+                                {/* SEND GREETINGS */}
                                 <DoodleAction
                                     title="Send greetings"
-                                    subtitle="Leave us a little note"
-                                    rotation="1.7deg"
-                                    onClick={() => setGreetingOpen(true)}
+                                    subtitle="Leave us a note"
+                                    rotation="1.2deg"
+                                    onClick={() =>
+                                        setGreetingOpen(true)
+                                    }
                                 >
                                     <EnvelopeDoodle />
                                 </DoodleAction>
 
-                                {/* =============================================
-                    CAMERA
-                ============================================== */}
-
+                                {/* TAKE A SNAP */}
                                 <DoodleAction
                                     title="Take a snap"
                                     subtitle="Open your camera"
-                                    rotation="1.2deg"
-                                    onClick={() => cameraInputRef.current?.click()}
+                                    rotation="-0.8deg"
+                                    onClick={() =>
+                                        cameraInputRef.current?.click()
+                                    }
                                 >
                                     <CameraDoodle />
                                 </DoodleAction>
-
-                                {/* =============================================
-                    ADD PHOTOS
-                ============================================== */}
-
-                                <DoodleAction
-                                    title="Add photos"
-                                    subtitle="Choose from your gallery"
-                                    rotation="-2deg"
-                                    onClick={() => fileInputRef.current?.click()}
-                                >
-                                    <PhotoStackDoodle />
-                                </DoodleAction>
-
-                                {/* little botanical line */}
-                                <div className="pointer-events-none absolute -bottom-8 left-1/2 hidden -translate-x-1/2 sm:block">
-                                    <BotanicalDoodle />
-                                </div>
                             </div>
 
-                            {/* Hidden gallery input */}
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                accept="image/jpeg,image/png,image/webp"
-                                multiple
-                                className="sr-only"
-                                onChange={choose}
-                            />
+                            <div className="pointer-events-none absolute -bottom-5 left-1/2 hidden -translate-x-1/2 sm:block">
+                                <BotanicalDoodle />
+                            </div>
 
-                            {/* Camera input */}
+                            {/* Camera only — no gallery/add photos */}
                             <input
                                 ref={cameraInputRef}
                                 type="file"
@@ -590,9 +552,9 @@ Aneena & Loyed
                     </div>
                 </div>
 
-                {/* =====================================================
-            SELECTED PHOTOS / UPLOAD DESK
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    SELECTED PHOTOS / UPLOAD
+                ------------------------------------------------ */}
 
                 <AnimatePresence>
                     {selected.length > 0 && (
@@ -600,7 +562,7 @@ Aneena & Loyed
                             initial={{
                                 opacity: 0,
                                 height: 0,
-                                y: 15,
+                                y: 12,
                             }}
                             animate={{
                                 opacity: 1,
@@ -610,87 +572,97 @@ Aneena & Loyed
                             exit={{
                                 opacity: 0,
                                 height: 0,
-                                y: 15,
+                                y: 12,
                             }}
                             transition={{
-                                duration: 0.5,
+                                duration: 0.45,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
-                            className="relative z-10 mx-auto mt-20 max-w-6xl overflow-hidden"
+                            className="relative z-10 mx-auto mt-12 max-w-5xl overflow-hidden"
                         >
-                            <div className="border-t border-[#4e4035]/10 pt-8">
-                                <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+                            <div className="border-t border-[#4e4035]/10 pt-6">
+                                <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
                                     <div>
-                                        <span className="font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/35">
+                                        <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
                                             Your photographs
                                         </span>
 
                                         <p
-                                            className="mt-2 text-[28px] leading-none text-[#596041]/75"
+                                            className="mt-1.5 text-[22px] leading-none text-[#596041]/70"
                                             style={{
-                                                fontFamily: '"Nesta Mastone", cursive',
+                                                fontFamily:
+                                                    '"Nesta Mastone", cursive',
                                             }}
                                         >
                                             ready for the album
                                         </p>
                                     </div>
 
-                                    <span className="font-serif text-[7px] uppercase tracking-[0.25em] text-[#4e4035]/30">
+                                    <span className="font-serif text-[6px] uppercase tracking-[0.25em] text-[#4e4035]/25">
                                         {selected.length} / 6 selected
                                     </span>
                                 </div>
 
-                                {/* Name */}
-                                <div className="mt-8 max-w-[480px]">
-                                    <label className="font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/45">
+                                {/* NAME */}
+                                <div className="mt-5 max-w-[400px]">
+                                    <label className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/40">
                                         Your name
 
                                         <input
                                             value={name}
-                                            onChange={(e) => setName(e.target.value)}
+                                            onChange={(e) =>
+                                                setName(e.target.value)
+                                            }
                                             className="
-                        mt-3
-                        w-full
-                        border-0
-                        border-b
-                        border-[#4e4035]/20
-                        bg-transparent
-                        px-0
-                        py-2
-                        font-serif
-                        text-[17px]
-                        text-[#4e4035]
-                        outline-none
-                        placeholder:text-[#4e4035]/25
-                        focus:border-[#596041]/60
-                      "
+                                                mt-2
+                                                w-full
+                                                border-0
+                                                border-b
+                                                border-[#4e4035]/15
+                                                bg-transparent
+                                                px-0
+                                                py-1.5
+                                                font-serif
+                                                text-[14px]
+                                                text-[#4e4035]
+                                                outline-none
+                                                placeholder:text-[#4e4035]/22
+                                                focus:border-[#596041]/50
+                                            "
                                             placeholder="Who should we thank?"
                                         />
                                     </label>
                                 </div>
 
-                                {/* Photos */}
-                                <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+                                {/* PHOTOS */}
+                                <div className="mt-5 grid grid-cols-3 gap-2.5 sm:grid-cols-6 sm:gap-3">
                                     {selected.map((item, index) => (
                                         <motion.div
                                             key={item.url}
                                             initial={{
                                                 opacity: 0,
-                                                scale: 0.92,
-                                                rotate: index % 2 === 0 ? -2 : 2,
+                                                scale: 0.94,
+                                                rotate:
+                                                    index % 2 === 0
+                                                        ? -2
+                                                        : 2,
                                             }}
                                             animate={{
                                                 opacity: 1,
                                                 scale: 1,
-                                                rotate: index % 2 === 0 ? -2 : 2,
+                                                rotate:
+                                                    index % 2 === 0
+                                                        ? -2
+                                                        : 2,
                                             }}
                                             className="group relative"
                                         >
-                                            <div className="bg-[#eee9df] p-2 shadow-[0_6px_18px_rgba(78,64,53,0.08)]">
+                                            <div className="bg-[#eee9df] p-1.5 shadow-[0_5px_14px_rgba(78,64,53,0.07)]">
                                                 <div className="aspect-square overflow-hidden bg-[#d8c6a9]">
                                                     <img
                                                         src={item.url}
-                                                        alt={`Selected photo ${index + 1}`}
+                                                        alt={`Selected photo ${index + 1
+                                                            }`}
                                                         className="h-full w-full object-cover"
                                                     />
                                                 </div>
@@ -698,36 +670,42 @@ Aneena & Loyed
 
                                             <button
                                                 type="button"
-                                                onClick={() => removePhoto(index)}
-                                                aria-label={`Remove photo ${index + 1}`}
+                                                onClick={() =>
+                                                    removePhoto(index)
+                                                }
+                                                aria-label={`Remove photo ${index + 1
+                                                    }`}
                                                 className="
-                          absolute
-                          -right-2
-                          -top-2
-                          grid
-                          size-6
-                          place-items-center
-                          border
-                          border-[#4e4035]/15
-                          bg-[#eee9df]
-                          text-[#4e4035]/60
-                          opacity-100
-                          shadow-sm
-                          transition
-                          hover:text-[#596041]
-                        "
+                                                    absolute
+                                                    -right-1.5
+                                                    -top-1.5
+                                                    grid
+                                                    size-5
+                                                    place-items-center
+                                                    border
+                                                    border-[#4e4035]/10
+                                                    bg-[#eee9df]
+                                                    text-[#4e4035]/50
+                                                    shadow-sm
+                                                    transition
+                                                    hover:text-[#596041]
+                                                "
                                             >
-                                                <X size={11} strokeWidth={1.5} />
+                                                <X
+                                                    size={9}
+                                                    strokeWidth={1.4}
+                                                />
                                             </button>
                                         </motion.div>
                                     ))}
                                 </div>
 
-                                {/* Upload */}
-                                <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                                    <p className="max-w-md font-serif text-[10px] leading-5 text-[#4e4035]/40">
-                                        Your photographs will become part of our private
-                                        wedding album.
+                                {/* UPLOAD */}
+                                <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                                    <p className="max-w-sm font-serif text-[9px] leading-4 text-[#4e4035]/35">
+                                        Your photographs will become
+                                        part of our private wedding
+                                        album.
                                     </p>
 
                                     <button
@@ -735,33 +713,36 @@ Aneena & Loyed
                                         onClick={upload}
                                         disabled={loading}
                                         className="
-                      flex
-                      items-center
-                      justify-center
-                      gap-3
-                      border
-                      border-[#596041]/50
-                      bg-[#596041]/[0.88]
-                      px-7
-                      py-3.5
-                      text-[#f2eee5]
-                      transition-all
-                      duration-300
-                      hover:bg-[#4e4035]/90
-                      disabled:cursor-not-allowed
-                      disabled:opacity-60
-                    "
+                                            flex
+                                            items-center
+                                            justify-center
+                                            gap-2
+                                            border
+                                            border-[#596041]/40
+                                            bg-[#596041]/[0.86]
+                                            px-5
+                                            py-2.5
+                                            text-[#f2eee5]
+                                            transition-all
+                                            duration-300
+                                            hover:bg-[#4e4035]/90
+                                            disabled:cursor-not-allowed
+                                            disabled:opacity-60
+                                        "
                                     >
                                         {loading ? (
                                             <LoaderCircle
-                                                size={14}
+                                                size={11}
                                                 className="animate-spin"
                                             />
                                         ) : (
-                                            <Check size={14} strokeWidth={1.5} />
+                                            <Check
+                                                size={11}
+                                                strokeWidth={1.5}
+                                            />
                                         )}
 
-                                        <span className="font-serif text-[8px] uppercase tracking-[0.28em]">
+                                        <span className="font-serif text-[7px] uppercase tracking-[0.25em]">
                                             {loading
                                                 ? "Adding to album…"
                                                 : "Add to our album"}
@@ -773,12 +754,12 @@ Aneena & Loyed
                                     <p
                                         aria-live="polite"
                                         className="
-                      mt-5
-                      font-serif
-                      text-[10px]
-                      leading-5
-                      text-[#596041]
-                    "
+                                            mt-4
+                                            font-serif
+                                            text-[9px]
+                                            leading-4
+                                            text-[#596041]
+                                        "
                                     >
                                         {status}
                                     </p>
@@ -788,31 +769,31 @@ Aneena & Loyed
                     )}
                 </AnimatePresence>
 
-                {/* =====================================================
-            BOTTOM NOTE
-        ====================================================== */}
+                {/* ------------------------------------------------
+                    BOTTOM NOTE
+                ------------------------------------------------ */}
 
-                <div className="relative z-10 mx-auto mt-20 max-w-6xl sm:mt-24">
-                    <div className="flex items-center gap-3">
-                        <div className="flex shrink-0 items-center gap-2">
-                            <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#4e4035]/25">
+                <div className="relative z-10 mx-auto mt-12 max-w-5xl sm:mt-14">
+                    <div className="flex items-center gap-2.5">
+                        <div className="flex shrink-0 items-center gap-1.5">
+                            <span className="font-serif text-[5px] uppercase tracking-[0.22em] text-[#4e4035]/22">
                                 Page
                             </span>
 
-                            <span className="font-serif text-[11px] tracking-[0.12em] text-[#596041]/70">
+                            <span className="font-serif text-[9px] tracking-[0.12em] text-[#596041]/60">
                                 07
                             </span>
                         </div>
 
                         <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                        <span className="hidden font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/25 sm:block">
+                        <span className="hidden font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/22 sm:block">
                             Guest Album · The Wedding Post
                         </span>
 
                         <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                        <span className="font-serif text-[6px] uppercase tracking-[0.2em] text-[#4e4035]/20">
+                        <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/18">
                             A &amp; L
                         </span>
                     </div>
@@ -820,8 +801,8 @@ Aneena & Loyed
             </section>
 
             {/* =======================================================
-          GREETING NOTE
-      ======================================================== */}
+                GREETING NOTE
+            ======================================================== */}
 
             <AnimatePresence>
                 {greetingOpen && (
@@ -830,16 +811,16 @@ Aneena & Loyed
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="
-              fixed
-              inset-0
-              z-[100]
-              flex
-              items-center
-              justify-center
-              bg-[#4e4035]/20
-              px-5
-              backdrop-blur-[3px]
-            "
+                            fixed
+                            inset-0
+                            z-[100]
+                            flex
+                            items-center
+                            justify-center
+                            bg-[#4e4035]/20
+                            px-5
+                            backdrop-blur-[3px]
+                        "
                         onMouseDown={(e) => {
                             if (e.target === e.currentTarget) {
                                 setGreetingOpen(false);
@@ -849,44 +830,44 @@ Aneena & Loyed
                         <motion.div
                             initial={{
                                 opacity: 0,
-                                y: 25,
-                                rotate: -1.5,
+                                y: 20,
+                                rotate: -1.2,
                             }}
                             animate={{
                                 opacity: 1,
                                 y: 0,
-                                rotate: -0.5,
+                                rotate: -0.4,
                             }}
                             exit={{
                                 opacity: 0,
-                                y: 20,
+                                y: 15,
                             }}
                             transition={{
-                                duration: 0.45,
+                                duration: 0.4,
                                 ease: [0.22, 1, 0.36, 1],
                             }}
                             className="
-                relative
-                w-full
-                max-w-[540px]
-                bg-[#eee9df]
-                px-7
-                pb-8
-                pt-7
-                shadow-[0_25px_70px_rgba(52,45,36,0.16)]
-                sm:px-10
-                sm:pb-10
-              "
+                                relative
+                                w-full
+                                max-w-[460px]
+                                bg-[#eee9df]
+                                px-6
+                                pb-7
+                                pt-6
+                                shadow-[0_20px_55px_rgba(52,45,36,0.14)]
+                                sm:px-8
+                                sm:pb-8
+                            "
                         >
-                            {/* paper grain */}
+                            {/* Paper grain */}
                             <div
                                 className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  opacity-[0.12]
-                  mix-blend-multiply
-                "
+                                    pointer-events-none
+                                    absolute
+                                    inset-0
+                                    opacity-[0.1]
+                                    mix-blend-multiply
+                                "
                                 style={{
                                     backgroundImage:
                                         "radial-gradient(rgba(78,64,53,0.25) 0.4px, transparent 0.6px)",
@@ -894,50 +875,57 @@ Aneena & Loyed
                                 }}
                             />
 
-                            {/* little tape */}
-                            <div className="absolute -top-2 left-1/2 h-7 w-20 -translate-x-1/2 rotate-[-2deg] bg-[#d8c6a9]/25" />
+                            {/* Tape */}
+                            <div className="absolute -top-2 left-1/2 h-6 w-16 -translate-x-1/2 rotate-[-2deg] bg-[#d8c6a9]/25" />
 
+                            {/* Close */}
                             <button
                                 type="button"
-                                onClick={() => setGreetingOpen(false)}
+                                onClick={() =>
+                                    setGreetingOpen(false)
+                                }
                                 className="
-                  absolute
-                  right-4
-                  top-4
-                  grid
-                  size-8
-                  place-items-center
-                  text-[#4e4035]/45
-                  transition
-                  hover:text-[#596041]
-                "
+                                    absolute
+                                    right-3
+                                    top-3
+                                    grid
+                                    size-7
+                                    place-items-center
+                                    text-[#4e4035]/40
+                                    transition
+                                    hover:text-[#596041]
+                                "
                                 aria-label="Close"
                             >
-                                <X size={17} strokeWidth={1.2} />
+                                <X
+                                    size={15}
+                                    strokeWidth={1.2}
+                                />
                             </button>
 
                             <div className="relative">
-                                <div className="flex items-center gap-3 border-b border-[#4e4035]/10 pb-3">
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/30">
+                                <div className="flex items-center gap-2.5 border-b border-[#4e4035]/10 pb-2.5">
+                                    <span className="font-serif text-[5px] uppercase tracking-[0.3em] text-[#4e4035]/25">
                                         The Wedding Post
                                     </span>
 
                                     <span className="h-px flex-1 bg-[#4e4035]/10" />
 
-                                    <span className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#596041]/55">
+                                    <span className="font-serif text-[5px] uppercase tracking-[0.3em] text-[#596041]/50">
                                         A &amp; L
                                     </span>
                                 </div>
 
-                                <div className="mt-8">
-                                    <span className="font-serif text-[7px] uppercase tracking-[0.35em] text-[#596041]/60">
+                                <div className="mt-6">
+                                    <span className="font-serif text-[6px] uppercase tracking-[0.35em] text-[#596041]/55">
                                         A little note
                                     </span>
 
                                     <h3
-                                        className="mt-3 text-[52px] leading-[0.78] text-[#4e4035] sm:text-[62px]"
+                                        className="mt-2 text-[42px] leading-[0.8] text-[#4e4035] sm:text-[50px]"
                                         style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
+                                            fontFamily:
+                                                '"Nesta Mastone", cursive',
                                         }}
                                     >
                                         Send us
@@ -946,35 +934,39 @@ Aneena & Loyed
                                     </h3>
                                 </div>
 
-                                <div className="mt-8">
-                                    <label className="font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/45">
+                                {/* Name */}
+                                <div className="mt-6">
+                                    <label className="font-serif text-[6px] uppercase tracking-[0.3em] text-[#4e4035]/40">
                                         Your name
 
                                         <input
                                             value={name}
-                                            onChange={(e) => setName(e.target.value)}
+                                            onChange={(e) =>
+                                                setName(e.target.value)
+                                            }
                                             className="
-                        mt-3
-                        w-full
-                        border-0
-                        border-b
-                        border-[#4e4035]/20
-                        bg-transparent
-                        px-0
-                        py-2
-                        font-serif
-                        text-[16px]
-                        text-[#4e4035]
-                        outline-none
-                        placeholder:text-[#4e4035]/25
-                        focus:border-[#596041]/60
-                      "
+                                                mt-2
+                                                w-full
+                                                border-0
+                                                border-b
+                                                border-[#4e4035]/15
+                                                bg-transparent
+                                                px-0
+                                                py-1.5
+                                                font-serif
+                                                text-[14px]
+                                                text-[#4e4035]
+                                                outline-none
+                                                placeholder:text-[#4e4035]/22
+                                                focus:border-[#596041]/50
+                                            "
                                             placeholder="Your name"
                                         />
                                     </label>
                                 </div>
 
-                                <div className="relative mt-8">
+                                {/* Greeting */}
+                                <div className="relative mt-6">
                                     <textarea
                                         value={greeting}
                                         onChange={(e) =>
@@ -982,81 +974,87 @@ Aneena & Loyed
                                         }
                                         rows={4}
                                         className="
-                      w-full
-                      resize-none
-                      border-0
-                      bg-transparent
-                      px-0
-                      py-2
-                      text-[25px]
-                      leading-[1.55]
-                      text-[#4e4035]/75
-                      outline-none
-                      placeholder:text-[#4e4035]/25
-                    "
+                                            w-full
+                                            resize-none
+                                            border-0
+                                            bg-transparent
+                                            px-0
+                                            py-1.5
+                                            text-[21px]
+                                            leading-[1.5]
+                                            text-[#4e4035]/75
+                                            outline-none
+                                            placeholder:text-[#4e4035]/22
+                                        "
                                         style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
+                                            fontFamily:
+                                                '"Nesta Mastone", cursive',
                                         }}
                                         placeholder="Write your wishes here..."
                                     />
 
                                     <div
                                         className="
-                      pointer-events-none
-                      absolute
-                      inset-x-0
-                      bottom-0
-                      top-0
-                      -z-10
-                      opacity-40
-                    "
+                                            pointer-events-none
+                                            absolute
+                                            inset-x-0
+                                            bottom-0
+                                            top-0
+                                            -z-10
+                                            opacity-35
+                                        "
                                         style={{
                                             backgroundImage:
-                                                "repeating-linear-gradient(to bottom, transparent 0px, transparent 38px, rgba(78,64,53,0.10) 39px)",
+                                                "repeating-linear-gradient(to bottom, transparent 0px, transparent 34px, rgba(78,64,53,0.09) 35px)",
                                         }}
                                     />
                                 </div>
 
-                                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                                {/* Buttons */}
+                                <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
                                     <button
                                         type="button"
                                         onClick={sendGreeting}
                                         disabled={
                                             !greeting.trim() ||
-                                            greetingStatus === "sharing"
+                                            greetingStatus ===
+                                            "sharing"
                                         }
                                         className="
-                      flex
-                      flex-1
-                      items-center
-                      justify-center
-                      gap-2
-                      bg-[#596041]/[0.88]
-                      px-5
-                      py-3.5
-                      text-[#f2eee5]
-                      transition
-                      hover:bg-[#4e4035]
-                      disabled:cursor-not-allowed
-                      disabled:opacity-50
-                    "
+                                            flex
+                                            flex-1
+                                            items-center
+                                            justify-center
+                                            gap-2
+                                            bg-[#596041]/[0.86]
+                                            px-4
+                                            py-3
+                                            text-[#f2eee5]
+                                            transition
+                                            hover:bg-[#4e4035]
+                                            disabled:cursor-not-allowed
+                                            disabled:opacity-50
+                                        "
                                     >
-                                        {greetingStatus === "sharing" ? (
+                                        {greetingStatus ===
+                                            "sharing" ? (
                                             <LoaderCircle
-                                                size={14}
+                                                size={12}
                                                 className="animate-spin"
                                             />
-                                        ) : greetingStatus === "copied" ? (
-                                            <Check size={14} />
+                                        ) : greetingStatus ===
+                                            "copied" ? (
+                                            <Check size={12} />
                                         ) : (
                                             <Heart
-                                                size={13}
+                                                size={12}
                                                 strokeWidth={1.2}
                                             />
                                         )}
 
-                                        <span className="font-serif text-[8px] uppercase tracking-[0.28em]">
-                                            {greetingStatus === "copied"
+                                        <span className="font-serif text-[7px] uppercase tracking-[0.25em]">
+                                            {greetingStatus ===
+                                                "copied"
                                                 ? "Greeting copied"
                                                 : "Send greeting"}
                                         </span>
@@ -1066,47 +1064,52 @@ Aneena & Loyed
                                         type="button"
                                         onClick={copyInvitation}
                                         className="
-                      flex
-                      items-center
-                      justify-center
-                      gap-2
-                      border
-                      border-[#4e4035]/15
-                      px-5
-                      py-3.5
-                      text-[#4e4035]/60
-                      transition
-                      hover:border-[#596041]/40
-                      hover:text-[#596041]
-                    "
+                                            flex
+                                            items-center
+                                            justify-center
+                                            gap-2
+                                            border
+                                            border-[#4e4035]/12
+                                            px-4
+                                            py-3
+                                            text-[#4e4035]/55
+                                            transition
+                                            hover:border-[#596041]/35
+                                            hover:text-[#596041]
+                                        "
                                     >
-                                        <Copy size={13} strokeWidth={1.2} />
+                                        <Copy
+                                            size={12}
+                                            strokeWidth={1.2}
+                                        />
 
-                                        <span className="font-serif text-[8px] uppercase tracking-[0.28em]">
+                                        <span className="font-serif text-[7px] uppercase tracking-[0.25em]">
                                             Copy invitation
                                         </span>
                                     </button>
                                 </div>
 
-                                <div className="mt-7 flex items-center justify-center gap-2">
-                                    <span className="h-px w-8 bg-[#747a5a]/25" />
+                                {/* Footer */}
+                                <div className="mt-5 flex items-center justify-center gap-2">
+                                    <span className="h-px w-6 bg-[#747a5a]/20" />
 
                                     <Heart
-                                        size={9}
+                                        size={8}
                                         strokeWidth={1}
-                                        className="text-[#747a5a]/55"
+                                        className="text-[#747a5a]/50"
                                     />
 
                                     <span
-                                        className="text-[19px] text-[#596041]/50"
+                                        className="text-[16px] text-[#596041]/45"
                                         style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
+                                            fontFamily:
+                                                '"Nesta Mastone", cursive',
                                         }}
                                     >
                                         with love
                                     </span>
 
-                                    <span className="h-px w-8 bg-[#747a5a]/25" />
+                                    <span className="h-px w-6 bg-[#747a5a]/20" />
                                 </div>
                             </div>
                         </motion.div>
@@ -1118,7 +1121,7 @@ Aneena & Loyed
 }
 
 /* =============================================================
-   DOODLE ACTION COMPONENT
+   DOODLE ACTION
 ============================================================= */
 
 function DoodleAction({
@@ -1130,7 +1133,7 @@ function DoodleAction({
 }: {
     title: string;
     subtitle: string;
-    children: React.ReactNode;
+    children: ReactNode;
     onClick: () => void;
     rotation: string;
 }) {
@@ -1138,89 +1141,94 @@ function DoodleAction({
         <button
             type="button"
             onClick={onClick}
-            className="
-        group
-        relative
-        text-left
-        outline-none
-      "
+            className="group relative text-left outline-none"
             style={{
                 transform: `rotate(${rotation})`,
             }}
         >
             <div
                 className="
-          relative
-          flex
-          min-h-[190px]
-          flex-col
-          items-center
-          justify-center
-          border
-          border-[#4e4035]/[0.07]
-          bg-[#eee9df]/[0.18]
-          px-4
-          py-7
-          transition-all
-          duration-500
-          group-hover:-translate-y-1
-          group-hover:border-[#596041]/20
-          group-hover:bg-[#eee9df]/[0.34]
-        "
+                    relative
+                    flex
+                    min-h-[128px]
+                    flex-col
+                    items-center
+                    justify-center
+                    border
+                    border-[#4e4035]/[0.065]
+                    bg-[#eee9df]/[0.14]
+                    px-2
+                    py-4
+                    transition-all
+                    duration-400
+                    group-hover:-translate-y-0.5
+                    group-hover:border-[#596041]/15
+                    group-hover:bg-[#eee9df]/[0.28]
+                    sm:min-h-[145px]
+                    sm:px-3
+                    sm:py-5
+                "
             >
-                {/* imperfect paper edge */}
-                <div className="pointer-events-none absolute inset-[5px] border border-[#4e4035]/[0.035]" />
+                {/* Inner paper edge */}
+                <div className="pointer-events-none absolute inset-[4px] border border-[#4e4035]/[0.03]" />
 
-                {/* doodle */}
-                <div className="relative flex h-[94px] items-center justify-center text-[#596041]/75 transition-transform duration-500 group-hover:scale-[1.04]">
+                {/* Small doodle */}
+                <div className="relative flex h-[58px] w-full items-center justify-center text-[#596041]/65 transition-transform duration-400 group-hover:scale-[1.03] sm:h-[65px]">
                     {children}
                 </div>
 
-                {/* text */}
-                <div className="relative mt-4 text-center">
+                {/* Text */}
+                <div className="relative mt-2.5 text-center">
                     <p
-                        className="text-[25px] leading-none text-[#4e4035]/80"
+                        className="
+                            text-[17px]
+                            leading-none
+                            text-[#4e4035]/75
+                            sm:text-[19px]
+                        "
                         style={{
-                            fontFamily: '"Nesta Mastone", cursive',
+                            fontFamily:
+                                '"Nesta Mastone", cursive',
                         }}
                     >
                         {title}
                     </p>
 
-                    <p className="mt-2 font-serif text-[6px] uppercase tracking-[0.25em] text-[#4e4035]/30">
+                    <p className="mt-1.5 font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/25">
                         {subtitle}
                     </p>
                 </div>
 
-                {/* tiny hand-drawn arrow */}
+                {/* Tiny arrow */}
                 <svg
-                    viewBox="0 0 40 16"
+                    viewBox="0 0 30 12"
                     className="
-            pointer-events-none
-            absolute
-            bottom-3
-            right-4
-            h-4
-            w-10
-            text-[#596041]/25
-            transition-all
-            duration-500
-            group-hover:translate-x-1
-            group-hover:text-[#596041]/55
-          "
+                        pointer-events-none
+                        absolute
+                        bottom-2
+                        right-2.5
+                        h-3
+                        w-7
+                        text-[#596041]/20
+                        transition-all
+                        duration-400
+                        group-hover:translate-x-0.5
+                        group-hover:text-[#596041]/45
+                    "
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
                     <path
-                        d="M1 8C10 7 19 8 31 8"
+                        d="M1 6C8 5.5 15 6 23 6"
                         stroke="currentColor"
-                        strokeWidth="1"
+                        strokeWidth="0.8"
                         strokeLinecap="round"
                     />
+
                     <path
-                        d="M26 3L32 8L26 13"
+                        d="M19 2.5L24 6L19 9.5"
                         stroke="currentColor"
-                        strokeWidth="1"
+                        strokeWidth="0.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     />
@@ -1237,95 +1245,74 @@ function DoodleAction({
 function InvitationDoodle() {
     return (
         <svg
-            width="118"
-            height="94"
+            width="72"
+            height="60"
             viewBox="0 0 118 94"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="overflow-visible"
         >
-            {/* shadow */}
             <path
                 d="M18 78C39 83 74 83 99 78"
                 stroke="currentColor"
                 strokeWidth="1"
                 strokeLinecap="round"
-                opacity=".2"
+                opacity=".18"
             />
 
-            {/* envelope/card */}
             <path
                 d="M28 15H91V70H28V15Z"
                 stroke="currentColor"
-                strokeWidth="1.6"
+                strokeWidth="1.35"
                 strokeLinejoin="round"
             />
 
-            {/* top card */}
             <path
                 d="M28 15L59.5 40L91 15"
                 stroke="currentColor"
-                strokeWidth="1.6"
+                strokeWidth="1.35"
                 strokeLinejoin="round"
             />
 
-            {/* bottom folds */}
             <path
                 d="M28 70L48 48"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".7"
+                strokeWidth=".9"
+                opacity=".6"
             />
 
             <path
                 d="M91 70L71 48"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".7"
+                strokeWidth=".9"
+                opacity=".6"
             />
 
-            {/* initials */}
             <path
                 d="M48 47C52 42 56 43 59.5 47C63 43 67 42 71 47"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".9"
                 strokeLinecap="round"
             />
 
-            {/* tiny heart */}
             <path
                 d="M59.5 58C55 53 48 58 59.5 65C71 58 64 53 59.5 58Z"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".9"
                 strokeLinejoin="round"
             />
 
-            {/* botanical marks */}
             <path
                 d="M17 24C12 19 10 16 11 11"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".9"
                 strokeLinecap="round"
             />
 
             <path
                 d="M12 16C15 16 18 14 19 11"
                 stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-            />
-
-            <path
-                d="M99 57C104 54 106 50 106 45"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-            />
-
-            <path
-                d="M104 50C108 50 110 48 111 45"
-                stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".9"
                 strokeLinecap="round"
             />
         </svg>
@@ -1339,81 +1326,69 @@ function InvitationDoodle() {
 function EnvelopeDoodle() {
     return (
         <svg
-            width="120"
-            height="94"
+            width="74"
+            height="60"
             viewBox="0 0 120 94"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="overflow-visible"
         >
-            {/* envelope */}
             <path
                 d="M19 25H101V72H19V25Z"
                 stroke="currentColor"
-                strokeWidth="1.7"
+                strokeWidth="1.4"
                 strokeLinejoin="round"
             />
 
             <path
                 d="M19 26L60 57L101 26"
                 stroke="currentColor"
-                strokeWidth="1.7"
+                strokeWidth="1.4"
                 strokeLinejoin="round"
             />
 
             <path
                 d="M19 72L48 46"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".65"
+                strokeWidth=".9"
+                opacity=".6"
             />
 
             <path
                 d="M101 72L72 46"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".65"
+                strokeWidth=".9"
+                opacity=".6"
             />
 
-            {/* heart */}
             <path
                 d="M60 43C55 37 46 43 60 53C74 43 65 37 60 43Z"
                 stroke="currentColor"
-                strokeWidth="1.4"
+                strokeWidth="1.1"
                 strokeLinejoin="round"
             />
 
-            {/* floating heart */}
             <path
                 d="M90 12C87 8 82 11 90 17C98 11 93 8 90 12Z"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".65"
+                strokeWidth=".8"
+                opacity=".55"
             />
 
-            {/* little lines */}
             <path
                 d="M25 15H39"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
-                opacity=".45"
+                opacity=".35"
             />
 
             <path
                 d="M81 17H95"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
-                opacity=".45"
-            />
-
-            <path
-                d="M103 37L108 34"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-                opacity=".4"
+                opacity=".35"
             />
         </svg>
     );
@@ -1426,36 +1401,33 @@ function EnvelopeDoodle() {
 function CameraDoodle() {
     return (
         <svg
-            width="125"
-            height="94"
+            width="76"
+            height="60"
             viewBox="0 0 125 94"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="overflow-visible"
         >
-            {/* camera body */}
             <path
                 d="M22 31H103C106 31 108 33 108 36V70C108 73 106 75 103 75H22C19 75 17 73 17 70V36C17 33 19 31 22 31Z"
                 stroke="currentColor"
-                strokeWidth="1.7"
+                strokeWidth="1.4"
                 strokeLinejoin="round"
             />
 
-            {/* top */}
             <path
                 d="M36 31L42 22H67L74 31"
                 stroke="currentColor"
-                strokeWidth="1.7"
+                strokeWidth="1.4"
                 strokeLinejoin="round"
             />
 
-            {/* lens */}
             <circle
                 cx="62.5"
                 cy="53"
                 r="14"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.25"
             />
 
             <circle
@@ -1463,123 +1435,36 @@ function CameraDoodle() {
                 cy="53"
                 r="7"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".85"
             />
 
-            {/* flash */}
             <path
                 d="M88 40H96"
                 stroke="currentColor"
-                strokeWidth="1.5"
+                strokeWidth="1.2"
                 strokeLinecap="round"
             />
 
-            {/* little sparkle */}
             <path
                 d="M104 16V26M99 21H109"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
-                opacity=".65"
+                opacity=".55"
             />
 
-            {/* corner marks */}
             <path
                 d="M13 17V25M9 21H17"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
-                opacity=".45"
+                opacity=".4"
             />
 
-            {/* small heart */}
             <path
                 d="M33 50C30 46 25 49 33 55C41 49 36 46 33 50Z"
                 stroke="currentColor"
-                strokeWidth="1"
-                opacity=".55"
-            />
-        </svg>
-    );
-}
-
-/* =============================================================
-   PHOTO STACK DOODLE
-============================================================= */
-
-function PhotoStackDoodle() {
-    return (
-        <svg
-            width="122"
-            height="94"
-            viewBox="0 0 122 94"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="overflow-visible"
-        >
-            {/* back photograph */}
-            <path
-                d="M24 20L89 13L95 66L30 73L24 20Z"
-                stroke="currentColor"
-                strokeWidth="1.3"
-                strokeLinejoin="round"
-                opacity=".55"
-            />
-
-            {/* front photograph */}
-            <path
-                d="M29 26H101V78H29V26Z"
-                stroke="currentColor"
-                strokeWidth="1.7"
-                strokeLinejoin="round"
-            />
-
-            {/* mountains */}
-            <path
-                d="M35 68L51 49L62 60L72 46L95 68"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-            />
-
-            {/* sun */}
-            <circle
-                cx="82"
-                cy="39"
-                r="5"
-                stroke="currentColor"
-                strokeWidth="1"
-            />
-
-            {/* little botanical */}
-            <path
-                d="M14 74C10 68 10 61 13 56"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-            />
-
-            <path
-                d="M12 65C16 65 19 63 21 60"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-            />
-
-            <path
-                d="M15 69C12 69 9 67 7 64"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
-            />
-
-            {/* little spark */}
-            <path
-                d="M103 17L106 11M106 20L112 17"
-                stroke="currentColor"
-                strokeWidth="1"
-                strokeLinecap="round"
+                strokeWidth=".8"
                 opacity=".5"
             />
         </svg>
@@ -1593,52 +1478,52 @@ function PhotoStackDoodle() {
 function BotanicalDoodle() {
     return (
         <svg
-            width="150"
-            height="34"
+            width="110"
+            height="25"
             viewBox="0 0 150 34"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="text-[#596041]/25"
+            className="text-[#596041]/20"
         >
             <path
                 d="M4 29C36 28 53 11 74 7C95 3 116 13 146 5"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
 
             <path
                 d="M43 20C39 15 39 11 41 7"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
 
             <path
                 d="M42 14C47 14 50 11 51 8"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
 
             <path
                 d="M96 10C93 6 93 3 95 1"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
 
             <path
                 d="M95 6C100 6 103 4 105 1"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
 
             <path
                 d="M122 10C124 6 127 4 130 3"
                 stroke="currentColor"
-                strokeWidth="1"
+                strokeWidth=".8"
                 strokeLinecap="round"
             />
         </svg>

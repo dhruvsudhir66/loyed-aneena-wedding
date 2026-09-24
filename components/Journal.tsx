@@ -11,35 +11,31 @@ function PageNumber({
   label: string;
 }) {
   return (
-    <div className="mt-14 border-t border-[#4e4035]/10 pt-4 sm:mt-16">
-      <div className="flex items-center gap-3">
+    <div className="mt-9 border-t border-[#4e4035]/10 pt-3 sm:mt-11">
+      <div className="flex items-center gap-2.5">
         {/* Page number */}
-
-        <div className="flex shrink-0 items-center gap-2">
-          <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#4e4035]/25">
+        <div className="flex shrink-0 items-center gap-1.5">
+          <span className="font-serif text-[5px] uppercase tracking-[0.22em] text-[#4e4035]/25">
             Page
           </span>
 
-          <span className="font-serif text-[12px] tracking-[0.12em] text-[#596041]/75">
+          <span className="font-serif text-[11px] tracking-[0.12em] text-[#596041]/75">
             {number}
           </span>
         </div>
 
         {/* Rule */}
-
         <span className="h-px flex-1 bg-[#4e4035]/10" />
 
         {/* Center editorial label */}
-
-        <span className="hidden font-serif text-[7px] uppercase tracking-[0.3em] text-[#4e4035]/25 sm:block">
+        <span className="hidden font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/25 sm:block">
           {label}
         </span>
 
         <span className="h-px flex-1 bg-[#4e4035]/10" />
 
         {/* Initials */}
-
-        <span className="font-serif text-[6px] uppercase tracking-[0.2em] text-[#4e4035]/20">
+        <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/20">
           A &amp; L
         </span>
       </div>
@@ -56,17 +52,16 @@ export default function Journal() {
         overflow-hidden
         bg-[#e9e4da]
         px-5
-        pb-8
-        pt-16
+        pb-6
+        pt-12
         text-[#4e4035]
         sm:px-8
-        sm:pb-10
-        sm:pt-20
+        sm:pb-8
+        sm:pt-16
       "
     >
       {/* =========================================================
           CRUMPLED PAPER BACKGROUND
-          Same visual treatment as Hero
       ========================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -99,7 +94,7 @@ export default function Journal() {
           className="
             absolute
             inset-0
-            opacity-[0.16]
+            opacity-[0.14]
             mix-blend-multiply
             [background-image:
               radial-gradient(
@@ -118,7 +113,6 @@ export default function Journal() {
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Giant faded masthead */}
-
         <div
           className="
             absolute
@@ -127,7 +121,7 @@ export default function Journal() {
             -translate-x-1/2
             whitespace-nowrap
             font-serif
-            text-[clamp(70px,15vw,180px)]
+            text-[clamp(64px,14vw,160px)]
             font-black
             uppercase
             leading-none
@@ -139,13 +133,11 @@ export default function Journal() {
         </div>
 
         {/* Top rules */}
-
         <div className="absolute left-5 right-5 top-5 border-t border-[#4e4035]/10 sm:left-8 sm:right-8" />
 
         <div className="absolute left-5 right-5 top-[27px] border-t border-[#596041]/[0.08] sm:left-8 sm:right-8" />
 
         {/* Newspaper header */}
-
         <div
           className="
             absolute
@@ -156,13 +148,13 @@ export default function Journal() {
             items-center
             justify-between
             font-serif
-            text-[6px]
+            text-[5px]
             uppercase
             tracking-[0.28em]
             text-[#4e4035]/30
             sm:left-8
             sm:right-8
-            sm:text-[7px]
+            sm:text-[6px]
           "
         >
           <span>Private Journal</span>
@@ -175,7 +167,6 @@ export default function Journal() {
         </div>
 
         {/* Side editorial marks */}
-
         <div className="absolute left-2 top-1/2 hidden -translate-y-1/2 -rotate-90 items-center gap-3 lg:flex">
           <span className="h-px w-8 bg-[#4e4035]/15" />
 
@@ -195,13 +186,11 @@ export default function Journal() {
         </div>
 
         {/* Column rules */}
+        <div className="absolute bottom-10 left-[12%] top-10 hidden w-px bg-[#4e4035]/[0.04] lg:block" />
 
-        <div className="absolute bottom-12 left-[12%] top-12 hidden w-px bg-[#4e4035]/[0.04] lg:block" />
-
-        <div className="absolute bottom-12 right-[12%] top-12 hidden w-px bg-[#4e4035]/[0.04] lg:block" />
+        <div className="absolute bottom-10 right-[12%] top-10 hidden w-px bg-[#4e4035]/[0.04] lg:block" />
 
         {/* Tiny stars */}
-
         <span className="absolute left-[9%] top-[17%] font-serif text-[10px] text-[#596041]/[0.16]">
           ✦
         </span>
@@ -215,10 +204,10 @@ export default function Journal() {
           BOTANICAL DETAIL
       ========================================================== */}
 
-      <div className="pointer-events-none absolute -right-20 top-10 opacity-[0.065]">
+      <div className="pointer-events-none absolute -right-20 top-8 opacity-[0.065]">
         <svg
-          width="270"
-          height="320"
+          width="240"
+          height="290"
           viewBox="0 0 260 320"
           fill="none"
           aria-hidden="true"
@@ -265,30 +254,34 @@ export default function Journal() {
           MAIN CONTENT
       ========================================================== */}
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
+      <div className="relative z-10 mx-auto w-full max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
+          viewport={{
+            once: true,
+            amount: 0.12,
+            margin: "0px 0px -8% 0px",
+          }}
           transition={{
-            duration: 0.9,
+            duration: 0.8,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="mx-auto w-full max-w-[900px]"
+          className="mx-auto w-full max-w-[820px]"
         >
           {/* =====================================================
               HEADER
           ====================================================== */}
 
-          <div className="mb-8 text-center sm:mb-10">
-            <div className="flex items-center justify-center gap-4">
-              <span className="h-px w-10 bg-[#4e4035]/18" />
+          <div className="mb-6 text-center sm:mb-8">
+            <div className="flex items-center justify-center gap-3">
+              <span className="h-px w-8 bg-[#4e4035]/18" />
 
-              <span className="font-serif text-[7px] uppercase tracking-[0.4em] text-[#596041]/60">
+              <span className="font-serif text-[6px] uppercase tracking-[0.38em] text-[#596041]/60">
                 From the journal
               </span>
 
-              <span className="h-px w-10 bg-[#4e4035]/18" />
+              <span className="h-px w-8 bg-[#4e4035]/18" />
             </div>
 
             <p
@@ -296,11 +289,11 @@ export default function Journal() {
                 fontFamily: '"Nesta Mastone", cursive',
               }}
               className="
-                mt-3
-                text-[25px]
+                mt-2.5
+                text-[23px]
                 leading-none
                 text-[#596041]/75
-                sm:text-[30px]
+                sm:text-[28px]
               "
             >
               A little note from us
@@ -311,16 +304,16 @@ export default function Journal() {
               JOURNAL METADATA
           ====================================================== */}
 
-          <div className="mb-4 flex items-center justify-between px-1">
-            <span className="font-serif text-[6px] uppercase tracking-[0.25em] text-[#4e4035]/30">
+          <div className="mb-3 flex items-center justify-between px-1">
+            <span className="font-serif text-[5px] uppercase tracking-[0.24em] text-[#4e4035]/30">
               The Wedding Journal
             </span>
 
-            <span className="font-serif text-[6px] uppercase tracking-[0.25em] text-[#596041]/45">
+            <span className="font-serif text-[5px] uppercase tracking-[0.24em] text-[#596041]/45">
               Vol. 01
             </span>
 
-            <span className="font-serif text-[6px] uppercase tracking-[0.25em] text-[#4e4035]/30">
+            <span className="font-serif text-[5px] uppercase tracking-[0.24em] text-[#4e4035]/30">
               22 · 11 · 2026
             </span>
           </div>
@@ -332,7 +325,7 @@ export default function Journal() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 18,
+              y: 14,
               rotate: -1,
             }}
             whileInView={{
@@ -340,26 +333,37 @@ export default function Journal() {
               y: 0,
               rotate: -0.6,
             }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{
+              once: true,
+              amount: 0.18,
+            }}
             transition={{
-              duration: 0.9,
+              duration: 0.8,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative mx-auto w-full max-w-[760px]"
+            className="
+              relative
+              mx-auto
+              w-[94%]
+              max-w-[650px]
+              sm:w-[88%]
+            "
           >
             {/* Offset paper layers */}
 
-            <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-[2deg] bg-[#747a5a]/[0.10]" />
+            <div className="absolute inset-0 translate-x-2.5 translate-y-2.5 rotate-[2deg] bg-[#747a5a]/[0.10]" />
 
-            <div className="absolute inset-0 -translate-x-2 translate-y-1 rotate-[-1.7deg] bg-[#d8c6a9]/[0.18]" />
+            <div className="absolute inset-0 -translate-x-1.5 translate-y-1 rotate-[-1.7deg] bg-[#d8c6a9]/[0.18]" />
 
             {/* Main photograph paper */}
 
-            <div className="relative bg-[#e6dfd3] p-2.5 shadow-[0_15px_32px_rgba(78,64,53,0.12)] sm:p-3">
+            <div className="relative bg-[#e6dfd3] p-2 shadow-[0_12px_26px_rgba(78,64,53,0.11)] sm:p-2.5">
               <div className="relative aspect-[4/3] overflow-hidden bg-[#d5cec3]">
                 <img
                   src="/save-date.webp"
                   alt="A moment from Loyed and Aneena's story"
+                  loading="lazy"
+                  decoding="async"
                   className="
                     absolute
                     inset-0
@@ -374,21 +378,18 @@ export default function Journal() {
                 />
 
                 {/* Sage archival wash */}
-
                 <div className="pointer-events-none absolute inset-0 bg-[#747a5a]/[0.09] mix-blend-color" />
 
                 {/* Warm wash */}
-
                 <div className="pointer-events-none absolute inset-0 bg-[#d8c6a9]/[0.08] mix-blend-soft-light" />
 
                 {/* Grain */}
-
                 <div
                   className="
                     pointer-events-none
                     absolute
                     inset-0
-                    opacity-[0.2]
+                    opacity-[0.18]
                     mix-blend-overlay
                     [background-image:
                       radial-gradient(
@@ -407,7 +408,7 @@ export default function Journal() {
                 <motion.div
                   initial={{
                     opacity: 0,
-                    y: 8,
+                    y: 7,
                   }}
                   whileInView={{
                     opacity: 1,
@@ -415,35 +416,34 @@ export default function Journal() {
                   }}
                   viewport={{ once: true }}
                   transition={{
-                    delay: 0.3,
-                    duration: 0.7,
+                    delay: 0.25,
+                    duration: 0.65,
                   }}
                   className="
                     absolute
                     bottom-[7%]
                     left-[5%]
                     z-10
-                    w-[74%]
-                    max-w-[410px]
+                    w-[76%]
+                    max-w-[360px]
                   "
                 >
                   {/* Controlled paper patch */}
-
                   <div
                     className="
                       absolute
-                      -inset-x-3
-                      -inset-y-3
+                      -inset-x-2.5
+                      -inset-y-2.5
                       -z-10
                       bg-[#eee8dc]/[0.72]
                       backdrop-blur-[1px]
                     "
                   />
 
-                  <div className="mb-2 flex items-center gap-2">
-                    <span className="h-px w-6 bg-[#596041]/45" />
+                  <div className="mb-1.5 flex items-center gap-2">
+                    <span className="h-px w-5 bg-[#596041]/45" />
 
-                    <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/55">
+                    <span className="font-serif text-[5px] uppercase tracking-[0.26em] text-[#4e4035]/55">
                       A note from us
                     </span>
                   </div>
@@ -453,12 +453,12 @@ export default function Journal() {
                       fontFamily: '"Nesta Mastone", cursive',
                     }}
                     className="
-                      text-[22px]
+                      text-[20px]
                       leading-[1.08]
                       text-[#4e4035]
                       drop-shadow-[0_1px_0_rgba(255,255,255,0.35)]
-                      sm:text-[29px]
-                      lg:text-[33px]
+                      sm:text-[26px]
+                      lg:text-[30px]
                     "
                   >
                     Somehow, somewhere along the way,
@@ -468,32 +468,29 @@ export default function Journal() {
                 </motion.div>
 
                 {/* Photo caption */}
-
                 <div className="absolute bottom-[3%] right-[4%] z-10">
-                  <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-white/65 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
+                  <span className="font-serif text-[4px] uppercase tracking-[0.18em] text-white/65 drop-shadow-[0_1px_2px_rgba(0,0,0,0.25)]">
                     Fig. 01 · A moment worth keeping
                   </span>
                 </div>
               </div>
 
               {/* Photo metadata */}
-
-              <div className="mt-2 flex items-center justify-between">
-                <span className="font-serif text-[6px] uppercase tracking-[0.2em] text-[#4e4035]/30">
+              <div className="mt-1.5 flex items-center justify-between">
+                <span className="font-serif text-[5px] uppercase tracking-[0.18em] text-[#4e4035]/30">
                   Archive · A &amp; L
                 </span>
 
-                <span className="font-serif text-[6px] uppercase tracking-[0.2em] text-[#4e4035]/30">
+                <span className="font-serif text-[5px] uppercase tracking-[0.18em] text-[#4e4035]/30">
                   Journal No. 01
                 </span>
               </div>
             </div>
 
             {/* Tape */}
+            <div className="absolute -right-4 -top-3 z-20 h-7 w-16 rotate-[23deg] bg-[#d8c6a9]/40" />
 
-            <div className="absolute -right-5 -top-4 z-20 h-8 w-20 rotate-[23deg] bg-[#d8c6a9]/40" />
-
-            <div className="absolute -bottom-3 left-[18%] z-20 h-6 w-16 rotate-[-8deg] bg-[#d8c6a9]/25" />
+            <div className="absolute -bottom-2.5 left-[18%] z-20 h-5 w-14 rotate-[-8deg] bg-[#d8c6a9]/25" />
           </motion.div>
 
           {/* =====================================================
@@ -503,7 +500,7 @@ export default function Journal() {
           <motion.div
             initial={{
               opacity: 0,
-              y: 12,
+              y: 10,
             }}
             whileInView={{
               opacity: 1,
@@ -511,30 +508,30 @@ export default function Journal() {
             }}
             viewport={{
               once: true,
-              amount: 0.25,
+              amount: 0.2,
             }}
             transition={{
-              delay: 0.15,
-              duration: 0.8,
+              delay: 0.12,
+              duration: 0.7,
             }}
             className="
               relative
               mx-auto
               w-full
-              max-w-[760px]
-              px-5
-              pb-2
-              pt-10
-              sm:px-10
-              sm:pt-12
+              max-w-[700px]
+              px-4
+              pb-1
+              pt-7
+              sm:px-8
+              sm:pt-9
             "
           >
             {/* Small continuation label */}
 
-            <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-[#4e4035]/18" />
+            <div className="mb-4 flex items-center gap-2.5">
+              <span className="h-px w-7 bg-[#4e4035]/18" />
 
-              <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/35">
+              <span className="font-serif text-[5px] uppercase tracking-[0.26em] text-[#4e4035]/35">
                 The next chapter
               </span>
 
@@ -543,24 +540,23 @@ export default function Journal() {
 
             {/* Remaining text */}
 
-            <div className="grid gap-7 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-10">
+            <div className="grid gap-5 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-8">
               <div>
-
-                <div className="mt-5 flex items-center gap-3">
+                <div className="mt-3 flex items-center gap-2.5">
                   <Heart
-                    size={10}
+                    size={9}
                     strokeWidth={1}
                     fill="currentColor"
                     className="text-[#747a5a]/65"
                   />
 
-                  <span className="h-px w-10 bg-[#4e4035]/15" />
+                  <span className="h-px w-8 bg-[#4e4035]/15" />
 
                   <p
                     style={{
                       fontFamily: '"Nesta Mastone", cursive',
                     }}
-                    className="text-[20px] text-[#596041]/75 sm:text-[23px]"
+                    className="text-[19px] text-[#596041]/75 sm:text-[22px]"
                   >
                     Loyed &amp; Aneena
                   </p>
@@ -569,16 +565,16 @@ export default function Journal() {
 
               {/* Small handwritten side note */}
 
-              <div className="sm:max-w-[150px] sm:text-right">
+              <div className="sm:max-w-[140px] sm:text-right">
                 <p
                   style={{
                     fontFamily: '"Nesta Mastone", cursive',
                   }}
                   className="
-                    text-[17px]
-                    leading-[1.12]
+                    text-[16px]
+                    leading-[1.1]
                     text-[#596041]/55
-                    sm:text-[19px]
+                    sm:text-[18px]
                   "
                 >
                   one page at a time,
@@ -590,12 +586,12 @@ export default function Journal() {
 
             {/* Tiny editorial metadata */}
 
-            <div className="mt-8 flex items-center justify-between border-t border-[#4e4035]/[0.08] pt-3">
-              <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#4e4035]/25">
+            <div className="mt-6 flex items-center justify-between border-t border-[#4e4035]/[0.08] pt-2.5">
+              <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/25">
                 Journal entry no. 01
               </span>
 
-              <span className="font-serif text-[6px] uppercase tracking-[0.22em] text-[#4e4035]/25">
+              <span className="font-serif text-[5px] uppercase tracking-[0.2em] text-[#4e4035]/25">
                 Kerala · 2026
               </span>
             </div>
