@@ -233,6 +233,7 @@ export default function RSVP() {
                         >
                             Will you
                             <br />
+                            <br />
                             <span className="ml-[0.18em] text-[#596041]">
                                 join us?
                             </span>
@@ -244,26 +245,10 @@ export default function RSVP() {
                         </p>
 
                         <div className="mt-10 max-w-[300px] rotate-[-2deg]">
-                            <div className="relative border-t border-[#4e4035]/15 pt-5">
-                                <p
-                                    className="text-[25px] leading-[1.05] text-[#596041]/70 sm:text-[29px]"
-                                    style={{
-                                        fontFamily: '"Nesta Mastone", cursive',
-                                    }}
-                                >
-                                    save us a little
-                                    <br />
-                                    place at your table.
-                                </p>
+                            <div className="relative border-t border-[#4e4035]/15">
 
                                 <div className="mt-3 flex items-center gap-2">
                                     <span className="h-px w-8 bg-[#747a5a]/35" />
-
-                                    <Heart
-                                        size={10}
-                                        strokeWidth={1}
-                                        className="text-[#747a5a]/65"
-                                    />
 
                                     <span className="font-serif text-[6px] uppercase tracking-[0.28em] text-[#4e4035]/30">
                                         22 · 11 · 2026
@@ -394,42 +379,11 @@ export default function RSVP() {
                             </div>
 
                             {/* =================================================
-                  EMAIL
-              ================================================= */}
-
-                            <div className="relative mt-8">
-                                <PaperLabel number="02" text="Email address" />
-
-                                <input
-                                    name="email"
-                                    type="email"
-                                    required
-                                    className="
-                    mt-3
-                    w-full
-                    border-0
-                    border-b
-                    border-[#4e4035]/20
-                    bg-transparent
-                    px-0
-                    py-2
-                    font-serif
-                    text-[17px]
-                    text-[#4e4035]
-                    outline-none
-                    placeholder:text-[#4e4035]/25
-                    focus:border-[#596041]/60
-                  "
-                                    placeholder="Where can we reach you?"
-                                />
-                            </div>
-
-                            {/* =================================================
                   ATTENDANCE
               ================================================= */}
 
                             <div className="relative mt-9">
-                                <PaperLabel number="03" text="Will you be there?" />
+                                <PaperLabel number="02" text="Will you be there?" />
 
                                 <div className="mt-5 grid gap-3 sm:grid-cols-2">
                                     <RadioOption
@@ -444,94 +398,6 @@ export default function RSVP() {
                                         value="Unable to attend"
                                         label="Unable to attend"
                                         description="With love from afar."
-                                    />
-                                </div>
-                            </div>
-
-                            {/* =================================================
-                  GUESTS
-              ================================================= */}
-
-                            <div className="relative mt-9">
-                                <PaperLabel number="04" text="Number of guests" />
-
-                                <div className="mt-5 flex flex-wrap gap-3">
-                                    {["1", "2", "3", "4", "5", "6"].map((number) => (
-                                        <label
-                                            key={number}
-                                            className="group cursor-pointer"
-                                        >
-                                            <input
-                                                type="radio"
-                                                name="guests"
-                                                value={number}
-                                                defaultChecked={number === "1"}
-                                                required
-                                                className="peer sr-only"
-                                            />
-
-                                            <span
-                                                className="
-                          grid
-                          size-9
-                          place-items-center
-                          rounded-full
-                          border
-                          border-[#4e4035]/15
-                          font-serif
-                          text-[10px]
-                          text-[#4e4035]/55
-                          transition-all
-                          group-hover:border-[#596041]/45
-                          peer-checked:border-[#596041]/60
-                          peer-checked:bg-[#596041]/[0.10]
-                          peer-checked:text-[#596041]
-                        "
-                                            >
-                                                {number}
-                                            </span>
-                                        </label>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* =================================================
-                  MESSAGE
-              ================================================= */}
-
-                            <div className="relative mt-9">
-                                <PaperLabel number="05" text="A little note for us" />
-
-                                <div className="relative mt-4">
-                                    <textarea
-                                        name="message"
-                                        rows={4}
-                                        className="
-                      relative
-                      w-full
-                      resize-none
-                      border-0
-                      bg-transparent
-                      px-0
-                      py-1
-                      text-[22px]
-                      leading-[1.65]
-                      text-[#4e4035]/75
-                      outline-none
-                      placeholder:text-[#4e4035]/25
-                    "
-                                        style={{
-                                            fontFamily: '"Nesta Mastone", cursive',
-                                        }}
-                                        placeholder="Write something we can keep..."
-                                    />
-
-                                    <div
-                                        className="pointer-events-none absolute inset-x-0 bottom-0 top-0 -z-10 opacity-40"
-                                        style={{
-                                            backgroundImage:
-                                                "repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, rgba(78,64,53,0.10) 32px)",
-                                        }}
                                     />
                                 </div>
                             </div>
@@ -582,7 +448,7 @@ export default function RSVP() {
                                     <span className="font-serif text-[8px] uppercase tracking-[0.28em]">
                                         {status === "success"
                                             ? "RSVP received"
-                                            : "Send our response"}
+                                            : "Send response"}
                                     </span>
                                 </button>
 
@@ -590,8 +456,8 @@ export default function RSVP() {
                                     <p
                                         aria-live="polite"
                                         className={`mt-4 text-center font-serif text-[11px] leading-5 ${status === "error"
-                                                ? "text-red-800"
-                                                : "text-[#596041]"
+                                            ? "text-red-800"
+                                            : "text-[#596041]"
                                             }`}
                                     >
                                         {message}
@@ -619,7 +485,7 @@ export default function RSVP() {
                                         fontFamily: '"Nesta Mastone", cursive',
                                     }}
                                 >
-                                    Aneena &amp; Loyed
+                                    Loyed &amp; Aneena
                                 </p>
                             </div>
                         </div>

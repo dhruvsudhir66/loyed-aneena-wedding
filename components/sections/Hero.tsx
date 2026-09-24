@@ -86,7 +86,7 @@ function Countdown() {
           alt=""
           aria-hidden="true"
           className="
-          countdown-paper-mask
+            countdown-paper-mask
             pointer-events-none
             absolute
             left-1/2
@@ -106,13 +106,10 @@ function Countdown() {
           style={{
             WebkitMaskImage: "url('/countdown-paper.jpg')",
             maskImage: "url('/countdown-paper.jpg')",
-
             WebkitMaskSize: "100% 100%",
             maskSize: "100% 100%",
-
             WebkitMaskPosition: "center",
             maskPosition: "center",
-
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
           }}
@@ -319,7 +316,7 @@ export default function Hero() {
 
       {/* =========================================================
           NEWSPAPER EDITORIAL LAYER
-          
+
           Everything here is intentionally subtle.
           The crumpled paper remains the primary visual.
       ========================================================== */}
@@ -564,7 +561,7 @@ export default function Hero() {
           ✦
         </span>
 
-        <span className="absolute right-[10%] bottom-[21%] font-serif text-[9px] text-[#596041]/[0.16]">
+        <span className="absolute bottom-[21%] right-[10%] font-serif text-[9px] text-[#596041]/[0.16]">
           ✦
         </span>
 
@@ -649,7 +646,7 @@ export default function Hero() {
             gap-9
             md:grid-cols-[0.8fr_1.2fr]
             md:gap-12
-            lg:grid-cols-[0.78fr_1.22fr]
+            lg:grid-cols-[0.82fr_1.18fr]
             lg:gap-16
           "
         >
@@ -676,7 +673,12 @@ export default function Hero() {
               duration: 0.85,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="mx-auto w-full max-w-[245px] sm:max-w-[270px]"
+            className="
+              mx-auto
+              w-full
+              max-w-[270px]
+              sm:max-w-[300px]
+            "
           >
             {/* Editorial photo label */}
 
@@ -699,8 +701,8 @@ export default function Hero() {
                 className="
                   absolute
                   inset-0
-                  translate-x-[-7px]
-                  translate-y-[7px]
+                  translate-x-[-8px]
+                  translate-y-[8px]
                   rotate-[4deg]
                   bg-[#ddd6ca]/75
                 "
@@ -712,9 +714,9 @@ export default function Hero() {
                 className="
                   relative
                   bg-[#f4efe6]
-                  p-2.5
-                  pb-8
-                  shadow-[0_12px_28px_rgba(78,64,53,0.13)]
+                  p-3
+                  pb-9
+                  shadow-[0_14px_32px_rgba(78,64,53,0.14)]
                 "
               >
                 <div className="relative overflow-hidden bg-[#d5cec3]">
@@ -761,7 +763,7 @@ export default function Hero() {
                     left-0
                     right-0
                     text-center
-                    text-[18px]
+                    text-[19px]
                     text-[#4e4035]/60
                   "
                 >
@@ -859,7 +861,7 @@ export default function Hero() {
             {/* Small newspaper headline */}
 
             <div className="mt-2 flex items-center justify-center gap-2 md:justify-start">
-              <span className="font-serif text-[6px] uppercase tracking-[0.25em] text-[#596041]/40 mb-3">
+              <span className="mb-3 font-serif text-[6px] uppercase tracking-[0.25em] text-[#596041]/40">
                 A special edition
               </span>
 
@@ -927,27 +929,25 @@ export default function Hero() {
                 Est. 2026
               </span>
             </div>
-
-            {/* Scroll */}
           </motion.div>
         </div>
       </div>
 
       {/* =========================================================
-    PAGE FOOTER
-========================================================= */}
+          PAGE FOOTER
+      ========================================================== */}
 
       <div
         className="
-    pointer-events-none
-    absolute
-    bottom-5
-    left-5
-    right-5
-    z-30
-    sm:left-8
-    sm:right-8
-  "
+          pointer-events-none
+          absolute
+          bottom-5
+          left-5
+          right-5
+          z-30
+          sm:left-8
+          sm:right-8
+        "
       >
         <div className="flex items-center gap-3">
           {/* Page number */}
@@ -955,23 +955,23 @@ export default function Hero() {
           <div className="flex shrink-0 items-center gap-2">
             <span
               className="
-          font-serif
-          text-[6px]
-          uppercase
-          tracking-[0.22em]
-          text-[#4e4035]/25
-        "
+                font-serif
+                text-[6px]
+                uppercase
+                tracking-[0.22em]
+                text-[#4e4035]/25
+              "
             >
               Page
             </span>
 
             <span
               className="
-          font-serif
-          text-[10px]
-          tracking-[0.12em]
-          text-[#596041]/50
-        "
+                font-serif
+                text-[10px]
+                tracking-[0.12em]
+                text-[#596041]/50
+              "
             >
               01
             </span>
@@ -985,14 +985,14 @@ export default function Hero() {
 
           <span
             className="
-        hidden
-        font-serif
-        text-[7px]
-        uppercase
-        tracking-[0.3em]
-        text-[#4e4035]/25
-        sm:block
-      "
+              hidden
+              font-serif
+              text-[7px]
+              uppercase
+              tracking-[0.3em]
+              text-[#4e4035]/25
+              sm:block
+            "
           >
             A &amp; L · Special Edition
           </span>
@@ -1005,13 +1005,13 @@ export default function Hero() {
 
           <span
             className="
-        shrink-0
-        font-serif
-        text-[6px]
-        uppercase
-        tracking-[0.2em]
-        text-[#4e4035]/20
-      "
+              shrink-0
+              font-serif
+              text-[6px]
+              uppercase
+              tracking-[0.2em]
+              text-[#4e4035]/20
+            "
           >
             2026
           </span>

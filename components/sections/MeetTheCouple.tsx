@@ -145,9 +145,6 @@ function PersonSpread({
         >
             {/* ========================================================
           LOCAL PAPER SURFACE
-
-          This is intentionally NOT fixed.
-          It follows the page while scrolling.
       ======================================================== */}
 
             <div className="pointer-events-none absolute inset-0">
@@ -256,9 +253,7 @@ function PersonSpread({
       ======================================================== */}
 
             <div
-                className={`pointer-events-none absolute ${isBride
-                    ? "-right-16 top-[13%]"
-                    : "-left-16 bottom-[10%]"
+                className={`pointer-events-none absolute ${isBride ? "-right-16 top-[13%]" : "-left-16 bottom-[10%]"
                     } opacity-[0.09]`}
             >
                 <Botanical flip={!isBride} />
@@ -297,13 +292,10 @@ function PersonSpread({
                     className={`
             grid
             items-center
-            gap-12
+            gap-10
             lg:grid-cols-[0.92fr_1.08fr]
-            lg:gap-20
-            ${isBride
-                            ? ""
-                            : "lg:grid-cols-[1.08fr_0.92fr]"
-                        }
+            lg:gap-16
+            ${isBride ? "" : "lg:grid-cols-[1.08fr_0.92fr]"}
           `}
                 >
                     {/* ====================================================
@@ -333,11 +325,8 @@ function PersonSpread({
               relative
               mx-auto
               w-full
-              max-w-[420px]
-              ${isBride
-                                ? "lg:order-1"
-                                : "lg:order-2"
-                            }
+              max-w-[300px]
+              ${isBride ? "lg:order-1" : "lg:order-2"}
             `}
                     >
                         {/* Back paper layer */}
@@ -370,7 +359,7 @@ function PersonSpread({
 
                         {/* Main photograph */}
 
-                        <div className="relative bg-[#f2eee5] p-3 pb-12 shadow-[0_18px_40px_rgba(78,64,53,0.15)] sm:p-4 sm:pb-14">
+                        <div className="relative bg-[#f2eee5] p-2.5 pb-10 shadow-[0_14px_30px_rgba(78,64,53,0.13)] sm:p-3 sm:pb-11">
                             <div className="relative aspect-[4/5] overflow-hidden bg-[#d5cec3]">
                                 <img
                                     src={image}
@@ -419,8 +408,8 @@ function PersonSpread({
                                 <span
                                     className="
                     absolute
-                    bottom-3
-                    left-3
+                    bottom-2.5
+                    left-2.5
                     font-serif
                     text-[6px]
                     uppercase
@@ -435,12 +424,12 @@ function PersonSpread({
 
                             {/* Handwritten name */}
 
-                            <div className="absolute bottom-2 left-0 right-0 text-center">
+                            <div className="absolute bottom-1.5 left-0 right-0 text-center">
                                 <p
                                     style={{
                                         fontFamily: '"Nesta Mastone", cursive',
                                     }}
-                                    className="text-[28px] leading-none text-[#4e4035]/70 sm:text-[32px]"
+                                    className="text-[24px] leading-none text-[#4e4035]/70 sm:text-[27px]"
                                 >
                                     {name}
                                 </p>
@@ -452,14 +441,14 @@ function PersonSpread({
                         <div
                             className={`
                 absolute
-                top-[-13px]
+                top-[-12px]
                 z-20
-                h-8
-                w-20
+                h-7
+                w-16
                 bg-[#d8c6a9]/45
                 ${isBride
-                                    ? "right-[-16px] rotate-[25deg]"
-                                    : "left-[-16px] rotate-[-25deg]"
+                                    ? "right-[-13px] rotate-[25deg]"
+                                    : "left-[-13px] rotate-[-25deg]"
                                 }
               `}
                         />
@@ -469,10 +458,8 @@ function PersonSpread({
                         <div
                             className={`
                 absolute
-                -bottom-7
-                ${isBride
-                                    ? "left-1"
-                                    : "right-1"
+                -bottom-6
+                ${isBride ? "left-1" : "right-1"
                                 }
                 font-serif
                 text-[6px]
@@ -508,10 +495,7 @@ function PersonSpread({
                             ease: [0.22, 1, 0.36, 1],
                         }}
                         className={`
-              ${isBride
-                                ? "lg:order-2"
-                                : "lg:order-1"
-                            }
+              ${isBride ? "lg:order-2" : "lg:order-1"}
             `}
                     >
                         {/* Section label */}
@@ -687,6 +671,11 @@ export default function MeetTheCouple() {
             />
 
             <PaperSeam />
+
+            {/* ==========================================================
+          GROOM
+      ========================================================== */}
+
             <PersonSpread
                 name="Loyed"
                 role="The Groom"

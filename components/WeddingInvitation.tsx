@@ -11,8 +11,9 @@ import GuestUpload from "@/components/sections/GuestUpload";
 import Footer from "@/components/sections/Footer";
 import Journal from "./Journal";
 import PaperSeam from "@/components/PaperSeam";
-import MeetTheCouple from "./sections/MeetTheCouple";
-import Gallery from "./sections/Gallery";
+import MeetTheCouple from "@/components/sections/MeetTheCouple";
+import Gallery from "@/components/sections/Gallery";
+import Venue from "@/components/sections/Venue";
 
 export default function WeddingInvitation() {
   const [opened, setOpened] = useState(false);
@@ -161,6 +162,10 @@ export default function WeddingInvitation() {
             <PaperSeam />
 
             <Gallery />
+
+            <PaperSeam />
+
+            <Venue />
 
             <PaperSeam />
 
