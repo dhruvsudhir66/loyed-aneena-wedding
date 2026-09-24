@@ -1,8 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  Menu,
+  Volume2,
+  VolumeX,
+  X,
+} from "lucide-react";
 
 import SaveTheDate from "@/components/SaveTheDate";
 import Hero from "@/components/sections/Hero";
@@ -26,6 +32,9 @@ export default function WeddingInvitation() {
   const [opened, setOpened] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMuted, setIsMuted] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   /* =========================================================
      OPEN INVITATION
@@ -33,12 +42,37 @@ export default function WeddingInvitation() {
 
   const openInvitation = () => {
     setOpened(true);
+    setIsMuted(false);
+
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.muted = false;
+
+      audioRef.current.play().catch(() => {
+        // Browser prevented playback.
+      });
+    }
 
     requestAnimationFrame(() => {
       document
         .getElementById("home")
-        ?.scrollIntoView({ behavior: "smooth" });
+        ?.scrollIntoView({
+          behavior: "smooth",
+        });
     });
+  };
+
+  /* =========================================================
+     MUSIC TOGGLE
+  ========================================================= */
+
+  const toggleMute = () => {
+    if (!audioRef.current) return;
+
+    const nextMuted = !audioRef.current.muted;
+
+    audioRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
   };
 
   /* =========================================================
@@ -121,13 +155,22 @@ export default function WeddingInvitation() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-[#e9e4da]">
+      {/* =========================================================
+          WEDDING MUSIC
+      ========================================================= */}
+
+      <audio
+        ref={audioRef}
+        src="/music/Until_I_Found_You.mpeg"
+        preload="auto"
+        loop
+      />
 
       {/* =========================================================
           ONE CONTINUOUS PAPER SHEET
       ========================================================= */}
 
       <div className="pointer-events-none absolute inset-0 -z-10">
-
         <div
           className="absolute inset-0 bg-[#e9e4da] bg-[url('/crumpled-paper.jpg')] bg-repeat"
           style={{
@@ -150,7 +193,6 @@ export default function WeddingInvitation() {
       </div>
 
       <AnimatePresence mode="wait">
-
         {/* =======================================================
             SAVE THE DATE
         ======================================================= */}
@@ -161,7 +203,6 @@ export default function WeddingInvitation() {
             onOpen={openInvitation}
           />
         ) : (
-
           <motion.div
             key="invitation"
             initial={{
@@ -177,7 +218,6 @@ export default function WeddingInvitation() {
               ease: [0.22, 1, 0.36, 1],
             }}
           >
-
             {/* ===================================================
                 NAVIGATION
             =================================================== */}
@@ -196,7 +236,6 @@ export default function WeddingInvitation() {
                 lg:px-8
               "
             >
-
               {/* =================================================
                   COMPACT PAPER NAVBAR
               ================================================= */}
@@ -221,7 +260,6 @@ export default function WeddingInvitation() {
                     "polygon(0 0, 5% 1%, 10% 0, 15% 1%, 20% 0, 25% 1%, 30% 0, 35% 1%, 40% 0, 45% 1%, 50% 0, 55% 1%, 60% 0, 65% 1%, 70% 0, 75% 1%, 80% 0, 85% 1%, 90% 0, 95% 1%, 100% 0, 100% 93%, 95% 92%, 90% 94%, 85% 92%, 80% 94%, 75% 92%, 70% 94%, 65% 92%, 60% 94%, 55% 92%, 50% 94%, 45% 92%, 40% 94%, 35% 92%, 30% 94%, 25% 92%, 20% 94%, 15% 92%, 10% 94%, 5% 92%, 0 93%)",
                 }}
               >
-
                 {/* Paper texture */}
                 <div
                   className="
@@ -262,7 +300,6 @@ export default function WeddingInvitation() {
                 ================================================= */}
 
                 <div className="relative z-10 flex h-9 items-center justify-between">
-
                   {/* -----------------------------------------------
                       MONOGRAM
                   ----------------------------------------------- */}
@@ -270,27 +307,36 @@ export default function WeddingInvitation() {
                   <a
                     href="#home"
                     onClick={() => setMenuOpen(false)}
-                    className="group flex items-center leading-none"
+                    className="
+                      group
+                      relative
+                      flex
+                      h-8
+                      w-[62px]
+                      shrink-0
+                      items-center
+                      justify-start
+                      overflow-visible
+                      outline-none
+                    "
                     aria-label="Back to home"
                   >
-                    <span
+                    <img
+                      src="/images/logo.png"
+                      alt="L & A"
                       className="
-                        text-[26px]
-                        leading-none
-                        tracking-[-0.06em]
-                        text-[#596041]
-                        transition-transform
+                        block
+                        h-[31px]
+                        w-[58px]
+                        object-contain
+                        object-left
+                        opacity-[0.88]
+                        transition-all
                         duration-300
-                        group-hover:-rotate-1
-                        sm:text-[28px]
+                        group-hover:opacity-100
+                        group-hover:scale-[1.03]
                       "
-                      style={{
-                        fontFamily:
-                          '"Nesta Mastone", cursive',
-                      }}
-                    >
-                      A &amp; A
-                    </span>
+                    />
                   </a>
 
                   {/* -----------------------------------------------
@@ -298,9 +344,7 @@ export default function WeddingInvitation() {
                   ----------------------------------------------- */}
 
                   <nav className="hidden items-center md:flex">
-
                     <div className="flex items-center gap-0.5">
-
                       {links.map(([label, id], index) => {
                         const isActive =
                           activeSection === id;
@@ -368,12 +412,10 @@ export default function WeddingInvitation() {
                           </a>
                         );
                       })}
-
                     </div>
 
                     {/* Tiny date marker */}
                     <div className="ml-2 flex items-center gap-1.5 border-l border-[#4e4035]/10 pl-3">
-
                       <span className="font-serif text-[4px] uppercase tracking-[0.2em] text-[#4e4035]/30">
                         22
                       </span>
@@ -389,63 +431,155 @@ export default function WeddingInvitation() {
                       <span className="font-serif text-[4px] uppercase tracking-[0.2em] text-[#4e4035]/30">
                         26
                       </span>
-
                     </div>
                   </nav>
 
                   {/* -----------------------------------------------
-                      MOBILE MENU BUTTON
+                      RIGHT CONTROLS
                   ----------------------------------------------- */}
 
-                  <button
-                    onClick={() => setMenuOpen((value) => !value)}
-                    className="
-                      relative
-                      grid
-                      size-8
-                      place-items-center
-                      overflow-hidden
-                      border
-                      border-[#596041]/30
-                      bg-[#596041]
-                      text-[#f2ede2]
-                      shadow-[0_2px_7px_rgba(78,64,53,0.08)]
-                      transition-transform
-                      active:translate-y-px
-                      md:hidden
-                    "
-                    aria-label={menuOpen ? "Close navigation" : "Open navigation"}
-                    aria-expanded={menuOpen}
-                  >
-                    {/* subtle olive paper texture */}
-                    <span
+                  <div className="flex items-center gap-2">
+                    {/* =============================================
+                        MUSIC CONTROL
+                    ============================================= */}
+
+                    <button
+                      type="button"
+                      onClick={toggleMute}
                       className="
+                        group
+                        relative
+                        flex
+                        h-8
+                        items-center
+                        gap-1.5
+                        border
+                        border-[#596041]/35
+                        bg-[#596041]/[0.10]
+                        px-2.5
+                        text-[#596041]
+                        shadow-[0_2px_6px_rgba(78,64,53,0.045)]
+                        transition-all
+                        duration-200
+                        hover:border-[#596041]/55
+                        hover:bg-[#596041]/[0.16]
+                        active:translate-y-px
+                      "
+                      aria-label={
+                        isMuted
+                          ? "Unmute music"
+                          : "Mute music"
+                      }
+                      aria-pressed={isMuted}
+                    >
+                      {/* Tiny status line */}
+                      <span
+                        className={`
+                          absolute
+                          bottom-0
+                          left-2.5
+                          right-2.5
+                          h-px
+                          origin-left
+                          bg-[#596041]/45
+                          transition-transform
+                          duration-300
+                          ${isMuted
+                            ? "scale-x-0"
+                            : "scale-x-100"
+                          }
+                        `}
+                      />
+
+                      <span
+                        className="
+                          relative
+                          grid
+                          size-5
+                          place-items-center
+                          border
+                          border-[#596041]/20
+                          bg-[#eee9df]/45
+                        "
+                      >
+                        {isMuted ? (
+                          <VolumeX
+                            size={13}
+                            strokeWidth={1.35}
+                          />
+                        ) : (
+                          <Volume2
+                            size={13}
+                            strokeWidth={1.35}
+                          />
+                        )}
+                      </span>
+
+                      <span className="hidden font-serif text-[5px] uppercase tracking-[0.22em] sm:inline">
+                        {isMuted ? "Muted" : "Music"}
+                      </span>
+                    </button>
+
+                    {/* =============================================
+                        MOBILE MENU BUTTON
+                    ============================================= */}
+
+                    <button
+                      onClick={() =>
+                        setMenuOpen((value) => !value)
+                      }
+                      className="
+                        relative
+                        grid
+                        size-8
+                        place-items-center
+                        overflow-hidden
+                        border
+                        border-[#596041]/30
+                        bg-[#596041]
+                        text-[#f2ede2]
+                        shadow-[0_2px_7px_rgba(78,64,53,0.08)]
+                        transition-transform
+                        active:translate-y-px
+                        md:hidden
+                      "
+                      aria-label={
+                        menuOpen
+                          ? "Close navigation"
+                          : "Open navigation"
+                      }
+                      aria-expanded={menuOpen}
+                    >
+                      <span
+                        className="
                           pointer-events-none
                           absolute
                           inset-0
                           opacity-[0.10]
                           mix-blend-screen
                         "
-                      style={{
-                        backgroundImage: "url('/crumpled-paper.jpg')",
-                        backgroundSize: "450px auto",
-                      }}
-                    />
+                        style={{
+                          backgroundImage:
+                            "url('/crumpled-paper.jpg')",
+                          backgroundSize: "450px auto",
+                        }}
+                      />
 
-                    <span className="relative z-10">
-                      {menuOpen ? (
-                        <X
-                          size={15}
-                          strokeWidth={1.25}
-                        />
-                      ) : (
-                        <Menu
-                          size={15}
-                          strokeWidth={1.25}
-                        />
-                      )}
-                    </span>
-                  </button>
+                      <span className="relative z-10">
+                        {menuOpen ? (
+                          <X
+                            size={15}
+                            strokeWidth={1.25}
+                          />
+                        ) : (
+                          <Menu
+                            size={15}
+                            strokeWidth={1.25}
+                          />
+                        )}
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -486,7 +620,6 @@ export default function WeddingInvitation() {
                       -translate-x-1/2
                     "
                   >
-
                     {/* shadow */}
                     <div className="absolute inset-0 translate-y-1.5 bg-[#4e4035]/15 blur-[8px]" />
 
@@ -505,7 +638,6 @@ export default function WeddingInvitation() {
                           "polygon(0 0, 8% 1%, 16% 0, 24% 1%, 32% 0, 40% 1%, 48% 0, 56% 1%, 64% 0, 72% 1%, 80% 0, 88% 1%, 100% 0, 100% 94%, 92% 93%, 84% 95%, 76% 93%, 68% 95%, 60% 93%, 52% 95%, 44% 93%, 36% 95%, 28% 93%, 20% 95%, 12% 93%, 0 94%)",
                       }}
                     >
-
                       {/* texture */}
                       <div
                         className="
@@ -539,10 +671,8 @@ export default function WeddingInvitation() {
                       />
 
                       <div className="relative z-10">
-
                         {/* tiny header */}
                         <div className="flex items-center gap-2">
-
                           <span className="font-serif text-[4px] uppercase tracking-[0.3em] text-[#f2ede2]/45">
                             The Wedding Post
                           </span>
@@ -550,14 +680,12 @@ export default function WeddingInvitation() {
                           <span className="h-px flex-1 bg-[#f2ede2]/15" />
 
                           <span className="font-serif text-[4px] tracking-[0.2em] text-[#f2ede2]/40">
-                            A &amp; L
+                            L &amp; A
                           </span>
-
                         </div>
 
                         {/* links */}
                         <div className="mt-3 border-t border-[#f2ede2]/12">
-
                           {links.map(
                             ([label, id], index) => (
                               <motion.a
@@ -596,7 +724,6 @@ export default function WeddingInvitation() {
                                   py-2.5
                                 "
                               >
-
                                 <span className="font-serif text-[5px] tracking-[0.15em] text-[#d8c6a9]/60">
                                   {String(index + 1).padStart(
                                     2,
@@ -619,16 +746,13 @@ export default function WeddingInvitation() {
                                     group-hover:-translate-y-0.5
                                   "
                                 />
-
                               </motion.a>
                             )
                           )}
-
                         </div>
 
                         {/* tiny handwritten note */}
                         <div className="mt-3 flex items-center justify-between">
-
                           <span
                             className="rotate-[-2deg] text-[13px] text-[#d8c6a9]/70"
                             style={{
@@ -642,7 +766,6 @@ export default function WeddingInvitation() {
                           <span className="font-serif text-[4px] uppercase tracking-[0.22em] text-[#f2ede2]/25">
                             22 · 11 · 26
                           </span>
-
                         </div>
                       </div>
                     </nav>
@@ -684,7 +807,6 @@ export default function WeddingInvitation() {
             <PaperSeam />
 
             <Footer />
-
           </motion.div>
         )}
       </AnimatePresence>
